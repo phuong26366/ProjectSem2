@@ -29,6 +29,18 @@
 	document.getElementById('${page}').style.backgroundColor = "CornflowerBlue";
 	document.getElementById('${page}').style.color = "black";
 </script>
-
+<script>
+	$('#upload').change(function(ev) {
+		var input = $(this)[0];
+		console.log(input);
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#show_image').attr('src', e.target.result);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	})
+</script>
 </body>
 </html>
