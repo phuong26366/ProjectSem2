@@ -1,4 +1,4 @@
-package com.controller.maybay;
+package com.controller.airstrip;
 
 import java.util.List;
 
@@ -13,15 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.model.MayBay;
+import com.model.DuongBay;
 import com.reponsitory.DaoReponsitory;
 
 @Controller
-@RequestMapping(value = "/maybay")
-public class AirlineController {
-
+@RequestMapping(value = "/airstrip")
+public class AirstripController {
 	@Autowired
-	private DaoReponsitory<MayBay, Integer> mayBayReponsitory;
+	private DaoReponsitory<DuongBay, Integer> airstripReponsitory;
 
 	@RequestMapping(value = { "", "/index" })
 	public String getListProduct(Model model,
@@ -29,14 +28,14 @@ public class AirlineController {
 			@RequestParam(value = "name", required = false, defaultValue = "") String name) {
 		int pageSize = 3;
 		int firstResult = (page - 1) * pageSize;
-		List<MayBay> products;
+		List<DuongBay> products;
 		Long totalRecords;
 		if (name == "") {
-			totalRecords = mayBayReponsitory.countTotalRecords(null);
-			products = mayBayReponsitory.findAll(firstResult, pageSize);
+			totalRecords = airstripReponsitory.countTotalRecords(null);
+			products = airstripReponsitory.findAll(firstResult, pageSize);
 		} else {
-			totalRecords = mayBayReponsitory.countTotalRecords(name);
-			products = mayBayReponsitory.findAll(firstResult, pageSize, name);
+			totalRecords = airstripReponsitory.countTotalRecords(name);
+			products = airstripReponsitory.findAll(firstResult, pageSize, name);
 		}
 
 		model.addAttribute("pros", products);
@@ -44,60 +43,53 @@ public class AirlineController {
 		model.addAttribute("totalRecords", totalRecords);
 		model.addAttribute("page", page);
 		model.addAttribute("name", name);
-		return "admin/maybay/airlineIndex";
+		return "admin/airstrip/airstripIndex";
 	}
 
 	@GetMapping(value = "/initInsert")
 	public String add(Model model) {
-		MayBay m = new MayBay();
+		DuongBay m = new DuongBay();
 		model.addAttribute("m", m);
-		return "admin/maybay/addMayBay";
+		return "admin/airstrip/addAirstrip";
 	}
 
 	@PostMapping(value = "/insert")
-	public String insert(@Valid @ModelAttribute("m") MayBay m, BindingResult bindingResult, Model model) {
+	public String insert(@Valid @ModelAttribute("m") DuongBay m, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("m", m);
-			return "admin/maybay/addMayBay";
+			return "admin/airstrip/addAirstrip";
 		} else {
-			List<MayBay> mayBay = mayBayReponsitory.findAll();
-			for (MayBay mayBay2 : mayBay) {
-				if (m.getTenMayBay().equalsIgnoreCase(mayBay2.getTenMayBay()) == true) {
-					model.addAttribute("err", "Tên máy bay đã tồn tại");
-					return "admin/maybay/addMayBay";
-				}
-			}
-			boolean bl = mayBayReponsitory.add(m);
+			boolean bl = airstripReponsitory.add(m);
 			if (bl) {
-				return "redirect:/maybay/index";
+				return "redirect:/airstrip/index";
 			} else {
 				model.addAttribute("m", m);
 				model.addAttribute("err", "Thêm Mới Không Thành Công");
-				return "admin/maybay/addMayBay";
+				return "admin/airstrip/airstripIndex";
 			}
 		}
 	}
 	@GetMapping(value = "/preUpdate")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
-		MayBay m = mayBayReponsitory.getById(id);
+		DuongBay  m = airstripReponsitory.getById(id);
 		model.addAttribute("m", m);
-		return "admin/maybay/updateAirline";
+		return "admin/airstrip/updateAirstrip";
 	}
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("m") MayBay m, Model model) {
-		boolean bl = mayBayReponsitory.edit(m);
+	public String update(@ModelAttribute("m") DuongBay m, Model model) {
+		boolean bl = airstripReponsitory.edit(m);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");
-			return "redirect:/maybay/index";
+			return "redirect:/airstrip/index";
 		} else {
 			model.addAttribute("m", m);
 			model.addAttribute("err", "Cập Nhật Không Thành Công");
-			return "admin/maybay/updateAirline";
+			return "admin/airstrip/updateAirstrip";
 		}
 	}
 	@RequestMapping(value = "/delete")
 	public String xoa(@RequestParam("id") Integer id, Model model) {
-		mayBayReponsitory.delete(id);
-		return "redirect:/maybay/index";
+		airstripReponsitory.delete(id);
+		return "redirect:/airstrip/index";
 	}
 }

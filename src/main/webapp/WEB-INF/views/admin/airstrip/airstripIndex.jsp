@@ -15,7 +15,7 @@
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
-				<a href="${pageContext.request.contextPath}/maybay/initInsert"
+				<a href="${pageContext.request.contextPath}/airstrip/initInsert"
 					class="btn btn-success btn-sm">Thêm mới</a>
 			</form>
 			<div class="box-tools pull-right">
@@ -33,27 +33,20 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Id</th>
-						<th>Tên Máy Bay</th>
-						<th>Hãng Sản Xuất</th>
-						<th>Kích Thước</th>
-						<th>Số Ghế Loại 1</th>
-						<th>Số Ghế Loại 2</th>
-						<th>Tổng Ghế</th>
+						<th>Mã Đường Bay</th>
+						<th>Vị Trí</th>
+						<th>Chiều Dài</th>
+						<th>Chiều Rộng</th>
 						<th>Trạng Thái</th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${pros}" var="pro">
 						<tr>
-							<td>${pro.maMayBay}</td>
-							<td>${pro.tenMayBay}</td>
-							<td>${pro.hangSanXuat}</td>
-							<td>${pro.kichThuoc}</td>
-							<td>${pro.soGheL1}</td>
-							<td>${pro.soGheL2}</td>
-							<td>${pro.tongGhe}</td>
+							<td>${pro.maDuongBay}</td>
+							<td>${pro.viTri}</td>
+							<td>${pro.chieuDai}</td>
+							<td>${pro.chieuRong}</td>
 							<td><c:choose>
 									<c:when test="${pro.trangThai==true}">
 										<span class="label label-success">Hoạt Động</span>
@@ -63,9 +56,9 @@
 									</c:otherwise>
 								</c:choose></td>
 							<td><a class="btn btn-small btn-warning"
-								href="${pageContext.request.contextPath}/maybay/preUpdate?id=${pro.maMayBay}">Cập Nhật</a>
+								href="${pageContext.request.contextPath}/airstrip/preUpdate?id=${pro.maDuongBay}">Cập Nhật</a>
 								<a class="btn btn-small btn-danger"
-								href="${pageContext.request.contextPath}/maybay/delete?id=${pro.maMayBay}"
+								href="${pageContext.request.contextPath}/airstrip/delete?id=${pro.maDuongBay}"
 								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
 						</tr>
 					</c:forEach>
@@ -80,7 +73,7 @@
 					<c:forEach begin="1" end="${Math.ceil(totalRecords/pageSize)}"
 						var="i">
 						<li class="page-item"><a class="page-link" id="${i}"
-							href="${pageContext.request.contextPath}/maybay?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
+							href="${pageContext.request.contextPath}/airstrip?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
 						</li>
 					</c:forEach>
 				</ul>

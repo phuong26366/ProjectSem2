@@ -15,7 +15,7 @@
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
-				<a href="${pageContext.request.contextPath}/maybay/initInsert"
+				<a href="${pageContext.request.contextPath}/flight/initInsert"
 					class="btn btn-success btn-sm">Thêm mới</a>
 			</form>
 			<div class="box-tools pull-right">
@@ -33,13 +33,12 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Id</th>
+						<th>Mã Chuyến Bay</th>
 						<th>Tên Máy Bay</th>
-						<th>Hãng Sản Xuất</th>
-						<th>Kích Thước</th>
-						<th>Số Ghế Loại 1</th>
-						<th>Số Ghế Loại 2</th>
-						<th>Tổng Ghế</th>
+						<th>Ngày Bay</th>
+						<th>Giờ Bay</th>
+						<th>Điểm Đi</th>
+						<th>Điểm Đến </th>
 						<th>Trạng Thái</th>
 						<th></th>
 					</tr>
@@ -47,25 +46,24 @@
 				<tbody>
 					<c:forEach items="${pros}" var="pro">
 						<tr>
-							<td>${pro.maMayBay}</td>
-							<td>${pro.tenMayBay}</td>
-							<td>${pro.hangSanXuat}</td>
-							<td>${pro.kichThuoc}</td>
-							<td>${pro.soGheL1}</td>
-							<td>${pro.soGheL2}</td>
-							<td>${pro.tongGhe}</td>
+							<td>${pro.maChuyenBay}</td>
+							<td>${pro.maMayBay.tenMayBay}</td>
+							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${pro.ngayBay}"/></td>
+							<td>${pro.gioBay}</td>
+							<td>${pro.diemDi}</td>
+							<td>${pro.diemDen}</td>
 							<td><c:choose>
 									<c:when test="${pro.trangThai==true}">
-										<span class="label label-success">Hoạt Động</span>
+										<span class="label label-success">Chưa Bay</span>
 									</c:when>
 									<c:otherwise>
-										<span class="label label-danger">Bảo Trì</span>
+										<span class="label label-danger">Đã Bay</span>
 									</c:otherwise>
 								</c:choose></td>
 							<td><a class="btn btn-small btn-warning"
-								href="${pageContext.request.contextPath}/maybay/preUpdate?id=${pro.maMayBay}">Cập Nhật</a>
+								href="${pageContext.request.contextPath}/flight/preUpdate?id=${pro.maChuyenBay}">Cập Nhật</a>
 								<a class="btn btn-small btn-danger"
-								href="${pageContext.request.contextPath}/maybay/delete?id=${pro.maMayBay}"
+								href="${pageContext.request.contextPath}/flight/delete?id=${pro.maChuyenBay}"
 								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
 						</tr>
 					</c:forEach>
@@ -80,7 +78,7 @@
 					<c:forEach begin="1" end="${Math.ceil(totalRecords/pageSize)}"
 						var="i">
 						<li class="page-item"><a class="page-link" id="${i}"
-							href="${pageContext.request.contextPath}/maybay?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
+							href="${pageContext.request.contextPath}/flight?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
 						</li>
 					</c:forEach>
 				</ul>

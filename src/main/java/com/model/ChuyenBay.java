@@ -19,9 +19,9 @@ public class ChuyenBay {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "maChuyenBay")
-	private int maChuyenbBay;
+	private int maChuyenBay;
 	@Column(name = "ngayBay")
-	@NotEmpty(message = "Ngày bay không được để trống ")
+	@NotNull(message = "Ngày bay không được để trống ")
 	private Date ngayBay;
 	@Column(name = "diemDi")
 	@NotEmpty(message = "Điểm đi không được để trống ")
@@ -30,7 +30,7 @@ public class ChuyenBay {
 	@NotEmpty(message = "Điểm Đến không được để trống ")
 	private String diemDen;
 	@Column(name = "gioBay")
-	@NotEmpty(message = "Giờ bay không được để trống ")
+	@NotNull(message = "Giờ bay không được để trống ")
 	private String gioBay;
 	@Column(name = "trangThai")
 	@NotNull(message = "Vui lòng chọn trạng thái !")
@@ -43,15 +43,15 @@ public class ChuyenBay {
 	@JoinColumn(name = "maDuongBay")
 	@NotNull(message = "Vui lòng chọn mã máy bay")
 	private DuongBay maDuongBay;
-	public ChuyenBay(int maChuyenbBay, @NotEmpty(message = "Ngày bay không được để trống ") Date ngayBay,
+	public ChuyenBay(int maChuyenBay, @NotNull(message = "Ngày bay không được để trống ") Date ngayBay,
 			@NotEmpty(message = "Điểm đi không được để trống ") String diemDi,
 			@NotEmpty(message = "Điểm Đến không được để trống ") String diemDen,
-			@NotEmpty(message = "Giờ bay không được để trống ") String gioBay,
+			@NotNull(message = "Giờ bay không được để trống ") String gioBay,
 			@NotNull(message = "Vui lòng chọn trạng thái !") boolean trangThai,
 			@NotNull(message = "Vui lòng chọn mã máy bay") MayBay maMayBay,
 			@NotNull(message = "Vui lòng chọn mã máy bay") DuongBay maDuongBay) {
 		super();
-		this.maChuyenbBay = maChuyenbBay;
+		this.maChuyenBay = maChuyenBay;
 		this.ngayBay = ngayBay;
 		this.diemDi = diemDi;
 		this.diemDen = diemDen;
@@ -63,11 +63,11 @@ public class ChuyenBay {
 	public ChuyenBay() {
 		super();
 	}
-	public int getMaChuyenbBay() {
-		return maChuyenbBay;
+	public int getMaChuyenBay() {
+		return maChuyenBay;
 	}
-	public void setMaChuyenbBay(int maChuyenbBay) {
-		this.maChuyenbBay = maChuyenbBay;
+	public void setMaChuyenBay(int maChuyenBay) {
+		this.maChuyenBay = maChuyenBay;
 	}
 	public Date getNgayBay() {
 		return ngayBay;
@@ -111,6 +111,7 @@ public class ChuyenBay {
 	public void setMaDuongBay(DuongBay maDuongBay) {
 		this.maDuongBay = maDuongBay;
 	}
+	
 	
 	
 }

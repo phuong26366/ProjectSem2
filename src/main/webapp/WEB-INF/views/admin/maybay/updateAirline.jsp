@@ -25,10 +25,11 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<form:form action="insert" modelAttribute="m" method="post">
+			<form:form action="update" modelAttribute="m" method="post">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
+						<form:input path="maMayBay" type="hidden"/>	
 							<label for="">Tên Máy Bay :</label>
 							<form:input path="tenMayBay" cssClass="form-control" />
 							<br>
@@ -77,7 +78,7 @@
 					</div>
 				</div>
 
-				<button type="submit" class="btn btn-success">Thêm Mới</button>
+				<button type="submit" class="btn btn-success">Cập Nhật</button>
 
 			</form:form>
 
