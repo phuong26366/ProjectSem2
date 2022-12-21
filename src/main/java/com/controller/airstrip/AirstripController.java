@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.model.DuongBay;
+import com.model.MayBay;
 import com.reponsitory.AirstripReponsitory;
 
 
@@ -59,6 +60,13 @@ public class AirstripController {
 			model.addAttribute("m", m);
 			return "admin/airstrip/addAirstrip";
 		} else {
+			List<DuongBay> duongBay = airstripReponsitory.findAll();
+			for (DuongBay duongBay1 : duongBay) {
+				if (m.getTenDuongBay().equalsIgnoreCase(duongBay1.getTenDuongBay()) == true) {
+					model.addAttribute("err", "Tên máy bay đã tồn tại");
+					return "admin/maybay/addMayBay";
+				}
+			}
 			boolean bl = airstripReponsitory.add(m);
 			if (bl) {
 				return "redirect:/airstrip/index";
