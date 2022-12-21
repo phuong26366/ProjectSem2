@@ -15,7 +15,7 @@
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
-				<a href="${pageContext.request.contextPath}/airstrip/initInsert"
+				<a href="${pageContext.request.contextPath}/ticketdetail/initInsert"
 					class="btn btn-success btn-sm">Thêm mới</a>
 			</form>
 			<div class="box-tools pull-right">
@@ -33,32 +33,23 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Mã Đường Bay</th>
-						<th>Vị Trí</th>
-						<th>Chiều Dài</th>
-						<th>Chiều Rộng</th>
-						<th>Trạng Thái</th>
+						<th>Mã Thông Tin Vé</th>
+						<th>Mã Chuyến Bay</th>
+						<th>Loại Vé</th>
+						<th>Giá Tiền</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${pros}" var="pro">
 						<tr>
-							<td>${pro.maDuongBay}</td>
-							<td>${pro.viTri}</td>
-							<td>${pro.chieuDai}</td>
-							<td>${pro.chieuRong}</td>
-							<td><c:choose>
-									<c:when test="${pro.trangThai==true}">
-										<span class="label label-success">Hoạt Động</span>
-									</c:when>
-									<c:otherwise>
-										<span class="label label-danger">Bảo Trì</span>
-									</c:otherwise>
-								</c:choose></td>
+							<td>${pro.maThongTin}</td>
+							<td>${pro.maChuyenBay.maChuyenBay}</td>
+							<td>${pro.loaiVe}</td>
+							<td>${pro.giaVe}</td>
 							<td><a class="btn btn-small btn-warning"
-								href="${pageContext.request.contextPath}/airstrip/preUpdate?id=${pro.maDuongBay}">Cập Nhật</a>
-								<a class="btn btn-small btn-danger"
-								href="${pageContext.request.contextPath}/airstrip/delete?id=${pro.maDuongBay}"
+								href="${pageContext.request.contextPath}/ticketdetail/preUpdate?id=${pro.maThongTin}">Cập
+									Nhật</a> <a class="btn btn-small btn-danger"
+								href="${pageContext.request.contextPath}/ticketdetail/delete?id=${pro.maThongTin}"
 								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
 						</tr>
 					</c:forEach>
@@ -68,11 +59,12 @@
 		<!-- /.box-body -->
 		<!-- /.box-footer-->
 		<div class="box-footer text-center">
+			<nav aria-label="Page navigation ">
 				<ul class="pagination">
 					<c:forEach begin="1" end="${Math.ceil(totalRecords/pageSize)}"
 						var="i">
 						<li class="page-item"><a class="page-link" id="${i}"
-							href="${pageContext.request.contextPath}/airstrip?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
+							href="${pageContext.request.contextPath}/ticketdetail?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
 						</li>
 					</c:forEach>
 				</ul>

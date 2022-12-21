@@ -18,14 +18,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.model.Staff;
-import com.reponsitory.DaoReponsitory;
+import com.reponsitory.AirlineReponsitory;
+import com.reponsitory.StaffReponsitory;
 
 @Controller
 @RequestMapping(value = "/staff")
 public class StaffController {
 
 	@Autowired
-	private DaoReponsitory<Staff, Integer> staffReponsitory;
+	private StaffReponsitory staffReponsitory;
 	@Autowired
 	private ServletContext servletContext;
 
@@ -60,7 +61,7 @@ public class StaffController {
 		return "admin/staff/addStaff";
 	}
 
-	@PostMapping(value = "/insert")
+	@PostMapping(value = "/insertStaff")
 	public String insert(@Valid @ModelAttribute("s") Staff s, BindingResult bindingResult,Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("s", s);

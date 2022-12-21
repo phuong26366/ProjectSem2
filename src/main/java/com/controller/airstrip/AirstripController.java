@@ -3,7 +3,6 @@ package com.controller.airstrip;
 import java.util.List;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.model.DuongBay;
-import com.reponsitory.DaoReponsitory;
+import com.reponsitory.AirstripReponsitory;
+
 
 @Controller
 @RequestMapping(value = "/airstrip")
 public class AirstripController {
 	@Autowired
-	private DaoReponsitory<DuongBay, Integer> airstripReponsitory;
+	private AirstripReponsitory airstripReponsitory;
 
 	@RequestMapping(value = { "", "/index" })
 	public String getListProduct(Model model,

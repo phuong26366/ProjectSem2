@@ -172,7 +172,7 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a
-								href="${pageContext.request.contextPath}/category/data"><i
+								href="${pageContext.request.contextPath}/airstrip/index"><i
 									class="fa fa-circle-o"></i> Chi Tiết Đường Bay</a></li>
 						</ul></li>
 				</ul>
@@ -185,7 +185,7 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a
-								href="${pageContext.request.contextPath}/product/data"><i
+								href="${pageContext.request.contextPath}/maybay/index"><i
 									class="fa fa-circle-o"></i> Chi Tiết Máy Bay</a></li>
 						</ul></li>
 				</ul>
@@ -198,7 +198,7 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a
-								href="${pageContext.request.contextPath}/ordersImport/data"><i
+								href="${pageContext.request.contextPath}/staff/index"><i
 									class="fa fa-circle-o"></i>Chi Tiết Nhân Viên</a></li>
 						</ul>
 				</ul>
@@ -238,7 +238,7 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a
-								href="${pageContext.request.contextPath}/ordersImport/data"><i
+								href="${pageContext.request.contextPath}/flight/index"><i
 									class="fa fa-circle-o"></i>Chi Tiết Chuyến Bay</a></li>
 						</ul>
 				</ul>

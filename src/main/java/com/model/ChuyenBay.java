@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -43,13 +45,15 @@ public class ChuyenBay {
 	@JoinColumn(name = "maDuongBay")
 	@NotNull(message = "Vui lòng chọn mã máy bay")
 	private DuongBay maDuongBay;
+	@OneToMany(mappedBy = "maChuyenBay")
+	private List<TicketDetail> ticketDetails;
 	public ChuyenBay(int maChuyenBay, @NotNull(message = "Ngày bay không được để trống ") Date ngayBay,
 			@NotEmpty(message = "Điểm đi không được để trống ") String diemDi,
 			@NotEmpty(message = "Điểm Đến không được để trống ") String diemDen,
 			@NotNull(message = "Giờ bay không được để trống ") String gioBay,
 			@NotNull(message = "Vui lòng chọn trạng thái !") boolean trangThai,
 			@NotNull(message = "Vui lòng chọn mã máy bay") MayBay maMayBay,
-			@NotNull(message = "Vui lòng chọn mã máy bay") DuongBay maDuongBay) {
+			@NotNull(message = "Vui lòng chọn mã máy bay") DuongBay maDuongBay, List<TicketDetail> ticketDetails) {
 		super();
 		this.maChuyenBay = maChuyenBay;
 		this.ngayBay = ngayBay;
@@ -59,6 +63,7 @@ public class ChuyenBay {
 		this.trangThai = trangThai;
 		this.maMayBay = maMayBay;
 		this.maDuongBay = maDuongBay;
+		this.ticketDetails = ticketDetails;
 	}
 	public ChuyenBay() {
 		super();
@@ -111,7 +116,11 @@ public class ChuyenBay {
 	public void setMaDuongBay(DuongBay maDuongBay) {
 		this.maDuongBay = maDuongBay;
 	}
-	
-	
+	public List<TicketDetail> getTicketDetails() {
+		return ticketDetails;
+	}
+	public void setTicketDetails(List<TicketDetail> ticketDetails) {
+		this.ticketDetails = ticketDetails;
+	}
 	
 }

@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.model.MayBay;
-import com.reponsitory.DaoReponsitory;
+import com.reponsitory.AirlineReponsitory;
 
 @Controller
 @RequestMapping(value = "/maybay")
 public class AirlineController {
 
 	@Autowired
-	private DaoReponsitory<MayBay, Integer> mayBayReponsitory;
+	private AirlineReponsitory mayBayReponsitory;
 
 	@RequestMapping(value = { "", "/index" })
 	public String getListProduct(Model model,

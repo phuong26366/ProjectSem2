@@ -1,4 +1,4 @@
-package com.reponsitory;
+package com.reponsitory.imp;
 
 import java.util.List;
 
@@ -9,20 +9,24 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.model.ChuyenBay;
-@Repository
-public class FlightReponsitoryImp implements DaoReponsitory<ChuyenBay, Integer> {
+import com.model.Staff;
+import com.reponsitory.StaffReponsitory;
 
+
+@Repository
+public class StaffReponsitoryImp implements StaffReponsitory {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<ChuyenBay> findAll() {
+	public List<Staff> findAll() {
+		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			List<ChuyenBay> list = session.createCriteria(ChuyenBay.class).list();
+			List<Staff> list = session.createCriteria(Staff.class).list();
 			session.getTransaction().commit();
 			session.close();
 			return list;
@@ -35,11 +39,12 @@ public class FlightReponsitoryImp implements DaoReponsitory<ChuyenBay, Integer> 
 	}
 
 	@Override
-	public List<ChuyenBay> findAll(int position, int pageSize) {
+	public List<Staff> findAll(int position, int pageSize) {
+		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(ChuyenBay.class);
+			Criteria criteria = session.createCriteria(Staff.class);
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -52,12 +57,13 @@ public class FlightReponsitoryImp implements DaoReponsitory<ChuyenBay, Integer> 
 	}
 
 	@Override
-	public List<ChuyenBay> findAll(int position, int pageSize, String name) {
+	public List<Staff> findAll(int position, int pageSize, String name) {
+		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(ChuyenBay.class).add(Restrictions.like("diemDen", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(Staff.class).add(Restrictions.like("tenNhanVien", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -74,20 +80,20 @@ public class FlightReponsitoryImp implements DaoReponsitory<ChuyenBay, Integer> 
 		Session session = sessionFactory.openSession();
 		Long count;
 		if (name == null) {
-			count = (Long) session.createCriteria(ChuyenBay.class).setProjection(Projections.rowCount()).uniqueResult();
+			count = (Long) session.createCriteria(Staff.class).setProjection(Projections.rowCount()).uniqueResult();
 		} else {
-			count = (Long) session.createCriteria(ChuyenBay.class).setProjection(Projections.rowCount())
-					.add(Restrictions.like("diemDen", "%" + name + "%")).uniqueResult();
+			count = (Long) session.createCriteria(Staff.class).setProjection(Projections.rowCount())
+					.add(Restrictions.like("tenNhanVien", "%" + name + "%")).uniqueResult();
 		}
 		return count;
 	}
 
 	@Override
-	public ChuyenBay getById(Integer Id) {
+	public Staff getById(Integer Id) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			ChuyenBay c = (ChuyenBay) session.get(ChuyenBay.class, Id);
+			Staff c = (Staff) session.get(Staff.class, Id);
 			session.getTransaction().commit();
 			return c;
 		} catch (Exception e) {
@@ -101,7 +107,7 @@ public class FlightReponsitoryImp implements DaoReponsitory<ChuyenBay, Integer> 
 	}
 
 	@Override
-	public boolean add(ChuyenBay t) {
+	public boolean add(Staff t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -119,7 +125,7 @@ public class FlightReponsitoryImp implements DaoReponsitory<ChuyenBay, Integer> 
 	}
 
 	@Override
-	public boolean edit(ChuyenBay t) {
+	public boolean edit(Staff t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -141,7 +147,7 @@ public class FlightReponsitoryImp implements DaoReponsitory<ChuyenBay, Integer> 
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			ChuyenBay p = session.load(ChuyenBay.class, id);
+			Staff p = session.load(Staff.class, id);
 			session.remove(p);
 			session.getTransaction().commit();
 			return true;

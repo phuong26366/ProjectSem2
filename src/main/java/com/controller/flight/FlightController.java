@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,18 +23,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.model.ChuyenBay;
 import com.model.DuongBay;
 import com.model.MayBay;
-import com.reponsitory.DaoReponsitory;
+import com.reponsitory.AirlineReponsitory;
+import com.reponsitory.AirstripReponsitory;
+import com.reponsitory.FlightReponsitory;
 
 @Controller
 @RequestMapping(value = "/flight")
 public class FlightController {
 
 	@Autowired
-	private DaoReponsitory<MayBay, Integer> mayBayReponsitory;
+	private AirlineReponsitory mayBayReponsitory;
 	@Autowired
-	private DaoReponsitory<ChuyenBay, Integer> chyenBayReponsitory;
+	private FlightReponsitory chyenBayReponsitory;
 	@Autowired
-	private DaoReponsitory<DuongBay, Integer> duongBayReponsitory;
+	private AirstripReponsitory duongBayReponsitory;
 
 	@InitBinder
 	public void initBinder(WebDataBinder data) {

@@ -1,4 +1,4 @@
-package com.reponsitory;
+package com.reponsitory.imp;
 
 import java.util.List;
 
@@ -9,23 +9,24 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.model.Staff;
+import com.model.MayBay;
+import com.reponsitory.AirlineReponsitory;
 
 
 @Repository
-public class StaffReponsitoryImp implements DaoReponsitory<Staff, Integer> {
+public class AirlineReponsitoryIMp implements AirlineReponsitory {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<Staff> findAll() {
+	public List<MayBay> findAll() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			List<Staff> list = session.createCriteria(Staff.class).list();
+			List<MayBay> list = session.createCriteria(MayBay.class).list();
 			session.getTransaction().commit();
 			session.close();
 			return list;
@@ -38,12 +39,12 @@ public class StaffReponsitoryImp implements DaoReponsitory<Staff, Integer> {
 	}
 
 	@Override
-	public List<Staff> findAll(int position, int pageSize) {
+	public List<MayBay> findAll(int position, int pageSize) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Staff.class);
+			Criteria criteria = session.createCriteria(MayBay.class);
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -56,13 +57,13 @@ public class StaffReponsitoryImp implements DaoReponsitory<Staff, Integer> {
 	}
 
 	@Override
-	public List<Staff> findAll(int position, int pageSize, String name) {
+	public List<MayBay> findAll(int position, int pageSize, String name) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Staff.class).add(Restrictions.like("tenNhanVien", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(MayBay.class).add(Restrictions.like("tenMayBay", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -79,20 +80,20 @@ public class StaffReponsitoryImp implements DaoReponsitory<Staff, Integer> {
 		Session session = sessionFactory.openSession();
 		Long count;
 		if (name == null) {
-			count = (Long) session.createCriteria(Staff.class).setProjection(Projections.rowCount()).uniqueResult();
+			count = (Long) session.createCriteria(MayBay.class).setProjection(Projections.rowCount()).uniqueResult();
 		} else {
-			count = (Long) session.createCriteria(Staff.class).setProjection(Projections.rowCount())
-					.add(Restrictions.like("tenNhanVien", "%" + name + "%")).uniqueResult();
+			count = (Long) session.createCriteria(MayBay.class).setProjection(Projections.rowCount())
+					.add(Restrictions.like("tenMayBay", "%" + name + "%")).uniqueResult();
 		}
 		return count;
 	}
 
 	@Override
-	public Staff getById(Integer Id) {
+	public MayBay getById(Integer Id) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			Staff c = (Staff) session.get(Staff.class, Id);
+			MayBay c = (MayBay) session.get(MayBay.class, Id);
 			session.getTransaction().commit();
 			return c;
 		} catch (Exception e) {
@@ -106,7 +107,8 @@ public class StaffReponsitoryImp implements DaoReponsitory<Staff, Integer> {
 	}
 
 	@Override
-	public boolean add(Staff t) {
+	public boolean add(MayBay t) {
+		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -124,7 +126,7 @@ public class StaffReponsitoryImp implements DaoReponsitory<Staff, Integer> {
 	}
 
 	@Override
-	public boolean edit(Staff t) {
+	public boolean edit(MayBay t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -146,7 +148,7 @@ public class StaffReponsitoryImp implements DaoReponsitory<Staff, Integer> {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			Staff p = session.load(Staff.class, id);
+			MayBay p = session.load(MayBay.class, id);
 			session.remove(p);
 			session.getTransaction().commit();
 			return true;

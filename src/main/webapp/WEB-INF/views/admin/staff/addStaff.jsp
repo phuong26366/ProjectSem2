@@ -27,7 +27,7 @@
 					</div>
 		</div>
 		<div class="box-body">
-			<form:form action="insert" method="post" modelAttribute="s" >
+			<form:form action="insertStaff" method="post" modelAttribute="s" >
 				<div class="row">
 					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 						<div class="form-group">

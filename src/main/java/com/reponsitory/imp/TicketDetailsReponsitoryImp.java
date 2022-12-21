@@ -1,4 +1,4 @@
-package com.reponsitory;
+package com.reponsitory.imp;
 
 import java.util.List;
 
@@ -9,22 +9,24 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.model.DuongBay;
+import com.model.TicketDetail;
+import com.reponsitory.TicketDetailReponsitory;
+
 
 @Repository
-public class AirstripReponsitoryImp implements DaoReponsitory<DuongBay, Integer>{
-
+public class TicketDetailsReponsitoryImp implements TicketDetailReponsitory {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
-	public List<DuongBay> findAll() {
+	public List<TicketDetail> findAll() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			List<DuongBay> list = session.createCriteria(DuongBay.class).list();
+			List<TicketDetail> list = session.createCriteria(TicketDetail.class).list();
 			session.getTransaction().commit();
 			session.close();
 			return list;
@@ -37,11 +39,12 @@ public class AirstripReponsitoryImp implements DaoReponsitory<DuongBay, Integer>
 	}
 
 	@Override
-	public List<DuongBay> findAll(int position, int pageSize) {
+	public List<TicketDetail> findAll(int position, int pageSize) {
+		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(DuongBay.class);
+			Criteria criteria = session.createCriteria(TicketDetail.class);
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -54,12 +57,13 @@ public class AirstripReponsitoryImp implements DaoReponsitory<DuongBay, Integer>
 	}
 
 	@Override
-	public List<DuongBay> findAll(int position, int pageSize, String name) {
+	public List<TicketDetail> findAll(int position, int pageSize, String name) {
+		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(DuongBay.class).add(Restrictions.like("viTri", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(TicketDetail.class).add(Restrictions.like("loaiVe", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -76,20 +80,20 @@ public class AirstripReponsitoryImp implements DaoReponsitory<DuongBay, Integer>
 		Session session = sessionFactory.openSession();
 		Long count;
 		if (name == null) {
-			count = (Long) session.createCriteria(DuongBay.class).setProjection(Projections.rowCount()).uniqueResult();
+			count = (Long) session.createCriteria(TicketDetail.class).setProjection(Projections.rowCount()).uniqueResult();
 		} else {
-			count = (Long) session.createCriteria(DuongBay.class).setProjection(Projections.rowCount())
-					.add(Restrictions.like("viTri", "%" + name + "%")).uniqueResult();
+			count = (Long) session.createCriteria(TicketDetail.class).setProjection(Projections.rowCount())
+					.add(Restrictions.like("loaiVe", "%" + name + "%")).uniqueResult();
 		}
 		return count;
 	}
 
 	@Override
-	public DuongBay getById(Integer Id) {
+	public TicketDetail getById(Integer Id) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			DuongBay c = (DuongBay) session.get(DuongBay.class, Id);
+			TicketDetail c = (TicketDetail) session.get(TicketDetail.class, Id);
 			session.getTransaction().commit();
 			return c;
 		} catch (Exception e) {
@@ -103,7 +107,8 @@ public class AirstripReponsitoryImp implements DaoReponsitory<DuongBay, Integer>
 	}
 
 	@Override
-	public boolean add(DuongBay t) {
+	public boolean add(TicketDetail t) {
+		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -121,7 +126,7 @@ public class AirstripReponsitoryImp implements DaoReponsitory<DuongBay, Integer>
 	}
 
 	@Override
-	public boolean edit(DuongBay t) {
+	public boolean edit(TicketDetail t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -143,7 +148,7 @@ public class AirstripReponsitoryImp implements DaoReponsitory<DuongBay, Integer>
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			DuongBay p = session.load(DuongBay.class, id);
+			TicketDetail p = session.load(TicketDetail.class, id);
 			session.remove(p);
 			session.getTransaction().commit();
 			return true;
