@@ -34,6 +34,7 @@
 				<thead>
 					<tr>
 						<th>Mã Đường Bay</th>
+						<th>Tên Đường Bay</th>
 						<th>Vị Trí</th>
 						<th>Chiều Dài</th>
 						<th>Chiều Rộng</th>
@@ -44,6 +45,7 @@
 					<c:forEach items="${pros}" var="pro">
 						<tr>
 							<td>${pro.maDuongBay}</td>
+							<td>${pro.tenDuongBay}</td>
 							<td>${pro.viTri}</td>
 							<td>${pro.chieuDai}</td>
 							<td>${pro.chieuRong}</td>

@@ -4,6 +4,7 @@ use QLHeThong
 go
 create table duongbay(
 	maDuongBay int not null identity primary key,
+	tenDuongBay nvarchar(100) not null ,
 	viTri nvarchar(100) not null ,
 	chieuDai nvarchar(100) ,
 	chieuRong nvarchar(100),
@@ -25,6 +26,7 @@ create table chuyenbay(
 	maChuyenBay int not null identity primary key,
 	maDuongBay int not null,
 	maMAYBAY int not null,
+	tenChuyenBay nvarchar(100) not null ,
 	ngayBay Date not null,
 	ghiChu nvarchar(100),
 	diemDi nvarchar(100) not null,
@@ -53,14 +55,14 @@ create table nhanvien(
 	chucVu bit default(10),
 	userName varchar(100) not null unique ,
 	passWord varchar(50) not null ,
-	trangThai bit default(10),
+	trangThai bit default(0),
 )
 
 go 
 create table thongtinchitietve(
 	maThongTin int not null identity primary key,
 	maChuyenBay int not null,
-	loaiVe nvarchar(50),
+	loaiVe bit default(0),
 	giaVe float not null ,
 	FOREIGN KEY (maChuyenBay) REFERENCES chuyenbay(maChuyenBay),
 )

@@ -25,35 +25,40 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<div class="row">
-				<form:form action="update" method="post" modelAttribute="m">
+			<form:form action="update" method="post" modelAttribute="m">
+				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<div class="form-group">
-								<label for="">Chọn Mã Chuyến Bay :</label>
-								<form:select path="maChuyenBay.maChuyenBay"
-									cssClass="form-control">
-									<form:options items="${chuyenBays}" itemLabel="maChuyenBay"
-										itemValue="maChuyenBay" />
-								</form:select>
+						<div class="form-group">
+							<form:input path="maThongTin" type="hidden" />
+							<label for="">Chọn Mã Chuyến Bay :</label>
+							<form:select path="maChuyenBay.maChuyenBay"
+								cssClass="form-control">
+								<form:options items="${chuyenBays}" itemLabel="maChuyenBay"
+									itemValue="maChuyenBay" />
+							</form:select>
+						</div>
+						<div class="form-group">
+							<label for="">Loại Vé :</label>
+							<form:errors cssClass="erorr" path="loaiVe" />
+							<div class="radio">
+								<label><form:radiobutton path="loaiVe" value="true" />
+									<span class="label label-success">Thương Gia</span> </label>
 							</div>
-							<div class="form-group">
-								<label for="">Loại Vé :</label>
-								<form:input path="loaiVe" cssClass="form-control" />
-								<br>
-								<form:errors path="loaiVe" cssClass="erorr" />
-							</div>
-							<div class="form-group">
-								<label for="">Giá Vé :</label>
-								<form:input path="giaVe" cssClass="form-control" />
-								<br>
-								<form:errors path="giaVe" cssClass="erorr" />
+							<div class="radio">
+								<label><form:radiobutton path="loaiVe" value="false" />
+									<span class="label label-primary">Thường</span> </label>
 							</div>
 						</div>
-					</div>
-					<button type="submit" class="btn btn-success">Cập Nhật</button>
-				</form:form>
-			</div>
+						<div class="form-group">
+							<label for="">Giá Vé :</label>
+							<form:input path="giaVe" cssClass="form-control" />
+							<br>
+							<form:errors path="giaVe" cssClass="erorr" />
+						</div>
+						<button type="submit" class="btn btn-success">Cập Nhật Mới</button>
+					</div>		
+				</div>
+			</form:form>
 		</div>
 		<!-- /.box -->
 </section>

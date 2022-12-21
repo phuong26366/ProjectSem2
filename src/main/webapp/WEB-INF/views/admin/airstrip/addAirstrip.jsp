@@ -26,8 +26,14 @@
 		</div>
 		<div class="box-body">
 			<div class="row">
-				<form:form action="insert" method="post" modelAttribute="m" >
+				<form:form action="insert" method="post" modelAttribute="m">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<div class="form-group">
+							<label for="">Tên Đường Bay :</label>
+							<form:input path="tenDuongBay" cssClass="form-control" />
+							<br>
+							<form:errors path="tenDuongBay" cssClass="erorr" />
+						</div>
 						<div class="form-group">
 							<label for="">Vị Trí :</label>
 							<form:input path="viTri" cssClass="form-control" />

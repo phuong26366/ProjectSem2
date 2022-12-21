@@ -9,6 +9,7 @@ public interface TicketDetailReponsitory {
 	List<TicketDetail> findAll(int position, int pageSize);
 	List<TicketDetail> findAll(int position, int pageSize, String name);
 	Long countTotalRecords(String name);
+	Long countTotalRecords();
 	TicketDetail getById(Integer Id);
 	boolean add(TicketDetail t);
 	boolean edit(TicketDetail t);

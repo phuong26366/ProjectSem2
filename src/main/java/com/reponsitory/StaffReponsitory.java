@@ -1,8 +1,6 @@
 package com.reponsitory;
 
 import java.util.List;
-
-import com.model.MayBay;
 import com.model.Staff;
 public interface StaffReponsitory {
 	List<Staff> findAll();

@@ -33,14 +33,8 @@ public class TicketDetailController {
 		int firstResult = (page - 1) * pageSize;
 		List<TicketDetail> products;
 		Long totalRecords;
-		if (name == "") {
-			totalRecords = ticketDetailReponsitory.countTotalRecords(null);
-			products = ticketDetailReponsitory.findAll(firstResult, pageSize);
-		} else {
-			totalRecords = ticketDetailReponsitory.countTotalRecords(name);
-			products = ticketDetailReponsitory.findAll(firstResult, pageSize, name);
-		}
-
+		products = ticketDetailReponsitory.findAll();
+		totalRecords = ticketDetailReponsitory.countTotalRecords();
 		model.addAttribute("pros", products);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("totalRecords", totalRecords);

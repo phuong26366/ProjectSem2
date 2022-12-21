@@ -29,7 +29,7 @@
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
-						<form:input path="maChuyenBay" type="hidden"/>
+							<form:input path="maChuyenBay" type="hidden" />
 							<label for="">Chọn Đường Bay :</label>
 							<form:select path="maDuongBay.maDuongBay" cssClass="form-control">
 								<form:options items="${d}" itemLabel="maDuongBay"
@@ -46,6 +46,13 @@
 							</form:select>
 							<br>
 							<form:errors cssClass="erorr" path="maMayBay" />
+						</div>
+						<div class="form-group">
+							<label for="">Tên Chuyến Bay:</label>
+							<form:input type="text" path="tenChuyenBay"
+								cssClass="form-control" />
+							<br>
+							<form:errors cssClass="erorr" path="tenChuyenBay" />
 						</div>
 						<div class="form-group">
 							<label for="">Giờ Bay:</label>

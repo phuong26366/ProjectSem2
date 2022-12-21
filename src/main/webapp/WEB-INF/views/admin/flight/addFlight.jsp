@@ -47,6 +47,13 @@
 							<form:errors cssClass="erorr" path="maMayBay" />
 						</div>
 						<div class="form-group">
+							<label for="">Tên Chuyến Bay:</label>
+							<form:input type="text" path="tenChuyenBay"
+								cssClass="form-control" />
+							<br>
+							<form:errors cssClass="erorr" path="tenChuyenBay" />
+						</div>
+						<div class="form-group">
 							<label for="">Giờ Bay:</label>
 							<form:input type="time" path="gioBay" cssClass="form-control" />
 							<br>

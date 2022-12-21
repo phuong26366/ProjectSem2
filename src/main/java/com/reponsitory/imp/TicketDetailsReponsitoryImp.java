@@ -12,10 +12,9 @@ import org.springframework.stereotype.Repository;
 import com.model.TicketDetail;
 import com.reponsitory.TicketDetailReponsitory;
 
-
 @Repository
 public class TicketDetailsReponsitoryImp implements TicketDetailReponsitory {
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -63,7 +62,8 @@ public class TicketDetailsReponsitoryImp implements TicketDetailReponsitory {
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(TicketDetail.class).add(Restrictions.like("loaiVe", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(TicketDetail.class)
+					.add(Restrictions.like("loaiVe", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -80,7 +80,8 @@ public class TicketDetailsReponsitoryImp implements TicketDetailReponsitory {
 		Session session = sessionFactory.openSession();
 		Long count;
 		if (name == null) {
-			count = (Long) session.createCriteria(TicketDetail.class).setProjection(Projections.rowCount()).uniqueResult();
+			count = (Long) session.createCriteria(TicketDetail.class).setProjection(Projections.rowCount())
+					.uniqueResult();
 		} else {
 			count = (Long) session.createCriteria(TicketDetail.class).setProjection(Projections.rowCount())
 					.add(Restrictions.like("loaiVe", "%" + name + "%")).uniqueResult();
@@ -160,6 +161,14 @@ public class TicketDetailsReponsitoryImp implements TicketDetailReponsitory {
 			session.close();
 		}
 		return false;
+	}
+
+	@Override
+	public Long countTotalRecords() {
+		Session session = sessionFactory.openSession();
+		Long count;
+		count = (Long) session.createCriteria(TicketDetail.class).setProjection(Projections.rowCount()).uniqueResult();
+		return count;
 	}
 
 }

@@ -22,6 +22,9 @@ public class ChuyenBay {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "maChuyenBay")
 	private int maChuyenBay;
+	@Column(name = "tenChuyenBay")
+	@NotNull(message = "Tên Chuyến Bay không được để trống ")
+	private String tenChuyenBay;
 	@Column(name = "ngayBay")
 	@NotNull(message = "Ngày bay không được để trống ")
 	private Date ngayBay;
@@ -47,7 +50,8 @@ public class ChuyenBay {
 	private DuongBay maDuongBay;
 	@OneToMany(mappedBy = "maChuyenBay")
 	private List<TicketDetail> ticketDetails;
-	public ChuyenBay(int maChuyenBay, @NotNull(message = "Ngày bay không được để trống ") Date ngayBay,
+	public ChuyenBay(int maChuyenBay, @NotNull(message = "Tên Chuyến Bay không được để trống ") String tenChuyenBay,
+			@NotNull(message = "Ngày bay không được để trống ") Date ngayBay,
 			@NotEmpty(message = "Điểm đi không được để trống ") String diemDi,
 			@NotEmpty(message = "Điểm Đến không được để trống ") String diemDen,
 			@NotNull(message = "Giờ bay không được để trống ") String gioBay,
@@ -56,6 +60,7 @@ public class ChuyenBay {
 			@NotNull(message = "Vui lòng chọn mã máy bay") DuongBay maDuongBay, List<TicketDetail> ticketDetails) {
 		super();
 		this.maChuyenBay = maChuyenBay;
+		this.tenChuyenBay = tenChuyenBay;
 		this.ngayBay = ngayBay;
 		this.diemDi = diemDi;
 		this.diemDen = diemDen;
@@ -73,6 +78,12 @@ public class ChuyenBay {
 	}
 	public void setMaChuyenBay(int maChuyenBay) {
 		this.maChuyenBay = maChuyenBay;
+	}
+	public String getTenChuyenBay() {
+		return tenChuyenBay;
+	}
+	public void setTenChuyenBay(String tenChuyenBay) {
+		this.tenChuyenBay = tenChuyenBay;
 	}
 	public Date getNgayBay() {
 		return ngayBay;
@@ -122,5 +133,6 @@ public class ChuyenBay {
 	public void setTicketDetails(List<TicketDetail> ticketDetails) {
 		this.ticketDetails = ticketDetails;
 	}
+	
 	
 }

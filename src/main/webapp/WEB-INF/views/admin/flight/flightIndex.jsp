@@ -35,6 +35,7 @@
 					<tr>
 						<th>Mã Chuyến Bay</th>
 						<th>Tên Máy Bay</th>
+						<th>Tên Chuyến Bay</th>
 						<th>Ngày Bay</th>
 						<th>Giờ Bay</th>
 						<th>Điểm Đi</th>
@@ -48,6 +49,7 @@
 						<tr>
 							<td>${pro.maChuyenBay}</td>
 							<td>${pro.maMayBay.tenMayBay}</td>
+							<td>${pro.tenChuyenBay}</td>
 							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${pro.ngayBay}"/></td>
 							<td>${pro.gioBay}</td>
 							<td>${pro.diemDi}</td>

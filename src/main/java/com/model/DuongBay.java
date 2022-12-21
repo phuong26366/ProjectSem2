@@ -19,6 +19,9 @@ public class DuongBay {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "maDuongBay")
 	private int maDuongBay;
+	@Column(name = "tenDuongBay")
+	@NotNull(message = "Tên Đường Bay không được để trống ")
+	private String tenDuongBay;
 	@Column(name = "viTri")
 	@NotEmpty(message = "Vị Trí không được để trống ")
 	private String viTri;
@@ -33,12 +36,14 @@ public class DuongBay {
 	private boolean trangThai;
 	@OneToMany(mappedBy = "maDuongBay")
 	private List<ChuyenBay> chuyenBays;
-	public DuongBay(int maDuongBay, @NotEmpty(message = "Vị Trí không được để trống ") String viTri,
+	public DuongBay(int maDuongBay, @NotNull(message = "Tên Đường Bay không được để trống ") String tenDuongBay,
+			@NotEmpty(message = "Vị Trí không được để trống ") String viTri,
 			@NotEmpty(message = "Chiều Dài bay không được để trống ") String chieuDai,
 			@NotEmpty(message = "Chiều Rộng bay không được để trống ") String chieuRong,
 			@NotNull(message = "Vui lòng chọn trạng thái !") boolean trangThai, List<ChuyenBay> chuyenBays) {
 		super();
 		this.maDuongBay = maDuongBay;
+		this.tenDuongBay = tenDuongBay;
 		this.viTri = viTri;
 		this.chieuDai = chieuDai;
 		this.chieuRong = chieuRong;
@@ -53,6 +58,12 @@ public class DuongBay {
 	}
 	public void setMaDuongBay(int maDuongBay) {
 		this.maDuongBay = maDuongBay;
+	}
+	public String getTenDuongBay() {
+		return tenDuongBay;
+	}
+	public void setTenDuongBay(String tenDuongBay) {
+		this.tenDuongBay = tenDuongBay;
 	}
 	public String getViTri() {
 		return viTri;
@@ -84,6 +95,9 @@ public class DuongBay {
 	public void setChuyenBays(List<ChuyenBay> chuyenBays) {
 		this.chuyenBays = chuyenBays;
 	}
+
 	
+
 	
+
 }

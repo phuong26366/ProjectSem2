@@ -19,8 +19,8 @@ public class TicketDetail {
 	@Column(name = "maThongTin")
 	private int maThongTin ;
 	@Column(name = "loaiVe")
-	@NotEmpty(message = "Loại vé không được để trống ")
-	private String loaiVe ;
+	@NotNull(message = "Vui lòng chọn ! ")
+	private boolean loaiVe ;
 	@Column(name = "giaVe")
 	@NotNull(message = "Giá vé bay không được để trống ")
 	private float giaVe ;
@@ -28,7 +28,8 @@ public class TicketDetail {
 	@JoinColumn(name = "maChuyenBay")
 	@NotNull(message = "Vui lòng chọn mã chuyến bay")
 	private ChuyenBay maChuyenBay;
-	public TicketDetail(int maThongTin, String loaiVe, float giaVe,
+	public TicketDetail(int maThongTin, @NotNull(message = "Vui lòng chọn ! ") boolean loaiVe,
+			@NotNull(message = "Giá vé bay không được để trống ") float giaVe,
 			@NotNull(message = "Vui lòng chọn mã chuyến bay") ChuyenBay maChuyenBay) {
 		super();
 		this.maThongTin = maThongTin;
@@ -45,10 +46,10 @@ public class TicketDetail {
 	public void setMaThongTin(int maThongTin) {
 		this.maThongTin = maThongTin;
 	}
-	public String getLoaiVe() {
+	public boolean isLoaiVe() {
 		return loaiVe;
 	}
-	public void setLoaiVe(String loaiVe) {
+	public void setLoaiVe(boolean loaiVe) {
 		this.loaiVe = loaiVe;
 	}
 	public float getGiaVe() {
@@ -63,5 +64,6 @@ public class TicketDetail {
 	public void setMaChuyenBay(ChuyenBay maChuyenBay) {
 		this.maChuyenBay = maChuyenBay;
 	}
+	
 	
 }

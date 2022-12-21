@@ -34,7 +34,7 @@
 				<thead>
 					<tr>
 						<th>Mã Thông Tin Vé</th>
-						<th>Mã Chuyến Bay</th>
+						<th>Tên Chuyến Bay</th>
 						<th>Loại Vé</th>
 						<th>Giá Tiền</th>
 					</tr>
@@ -43,8 +43,15 @@
 					<c:forEach items="${pros}" var="pro">
 						<tr>
 							<td>${pro.maThongTin}</td>
-							<td>${pro.maChuyenBay.maChuyenBay}</td>
-							<td>${pro.loaiVe}</td>
+							<td>${pro.maChuyenBay.tenChuyenBay}</td>
+							<td><c:choose>
+									<c:when test="${pro.loaiVe==true}">
+										<span class="label label-success">Thương Gia</span>
+									</c:when>
+									<c:otherwise>
+										<span class="label label-primary">Thường</span>
+									</c:otherwise>
+								</c:choose></td>
 							<td>${pro.giaVe}</td>
 							<td><a class="btn btn-small btn-warning"
 								href="${pageContext.request.contextPath}/ticketdetail/preUpdate?id=${pro.maThongTin}">Cập
@@ -64,7 +71,7 @@
 					<c:forEach begin="1" end="${Math.ceil(totalRecords/pageSize)}"
 						var="i">
 						<li class="page-item"><a class="page-link" id="${i}"
-							href="${pageContext.request.contextPath}/ticketdetail?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
+							href="${pageContext.request.contextPath}/ticketdetail?page=${i}">${i}</a>
 						</li>
 					</c:forEach>
 				</ul>

@@ -44,7 +44,9 @@ public class Staff {
 			@NotEmpty(message = "Tên nhân viên không được để trống ") String tenNhanVien,
 			@NotEmpty(message = "Số điện thoại không được để trống ") String soDienThoai,
 			@NotEmpty(message = "Địa chỉ không được để trống ") String diaChi,
-			@NotNull(message = "Vui long chọn ! ") boolean chucVu, String userName, String password,
+			@NotNull(message = "Vui long chọn ! ") boolean chucVu,
+			@NotEmpty(message = "Tài khoản không được để trống ") String userName,
+			@NotEmpty(message = "Mật khẩu không được để trống ") String password,
 			@NotNull(message = "Vui long chọn ! ") boolean trangThai) {
 		super();
 		this.maNhanVien = maNhanVien;
