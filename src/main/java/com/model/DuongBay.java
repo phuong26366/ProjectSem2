@@ -20,7 +20,7 @@ public class DuongBay {
 	@Column(name = "maDuongBay")
 	private int maDuongBay;
 	@Column(name = "tenDuongBay")
-	@NotNull(message = "Tên Đường Bay không được để trống ")
+	@NotEmpty(message = "Tên Đường Bay không được để trống ")
 	private String tenDuongBay;
 	@Column(name = "viTri")
 	@NotEmpty(message = "Vị Trí không được để trống ")

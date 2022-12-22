@@ -50,6 +50,8 @@ public class ChuyenBay {
 	private DuongBay maDuongBay;
 	@OneToMany(mappedBy = "maChuyenBay")
 	private List<TicketDetail> ticketDetails;
+	@OneToMany(mappedBy = "maChuyenBays")
+	private List<Bill> bills;
 	public ChuyenBay(int maChuyenBay, @NotNull(message = "Tên Chuyến Bay không được để trống ") String tenChuyenBay,
 			@NotNull(message = "Ngày bay không được để trống ") Date ngayBay,
 			@NotEmpty(message = "Điểm đi không được để trống ") String diemDi,
@@ -57,7 +59,8 @@ public class ChuyenBay {
 			@NotNull(message = "Giờ bay không được để trống ") String gioBay,
 			@NotNull(message = "Vui lòng chọn trạng thái !") boolean trangThai,
 			@NotNull(message = "Vui lòng chọn mã máy bay") MayBay maMayBay,
-			@NotNull(message = "Vui lòng chọn mã máy bay") DuongBay maDuongBay, List<TicketDetail> ticketDetails) {
+			@NotNull(message = "Vui lòng chọn mã máy bay") DuongBay maDuongBay, List<TicketDetail> ticketDetails,
+			List<Bill> bills) {
 		super();
 		this.maChuyenBay = maChuyenBay;
 		this.tenChuyenBay = tenChuyenBay;
@@ -69,6 +72,7 @@ public class ChuyenBay {
 		this.maMayBay = maMayBay;
 		this.maDuongBay = maDuongBay;
 		this.ticketDetails = ticketDetails;
+		this.bills = bills;
 	}
 	public ChuyenBay() {
 		super();
@@ -133,6 +137,11 @@ public class ChuyenBay {
 	public void setTicketDetails(List<TicketDetail> ticketDetails) {
 		this.ticketDetails = ticketDetails;
 	}
-	
+	public List<Bill> getBills() {
+		return bills;
+	}
+	public void setBills(List<Bill> bills) {
+		this.bills = bills;
+	}
 	
 }
