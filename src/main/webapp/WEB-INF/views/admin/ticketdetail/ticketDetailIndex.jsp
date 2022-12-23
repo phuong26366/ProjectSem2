@@ -36,7 +36,7 @@
 						<th>Mã Thông Tin Vé</th>
 						<th>Tên Chuyến Bay</th>
 						<th>Loại Vé</th>
-						<th>Giá Tiền</th>
+						<th>Giá Tiền (VNĐ)</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,7 +52,7 @@
 										<span class="label label-primary">Thường</span>
 									</c:otherwise>
 								</c:choose></td>
-							<td>${pro.giaVe}</td>
+							<td><fmt:formatNumber value="${pro.giaVe}" /></td>
 							<td><a class="btn btn-small btn-warning"
 								href="${pageContext.request.contextPath}/ticketdetail/preUpdate?id=${pro.maThongTin}">Cập
 									Nhật</a> <a class="btn btn-small btn-danger"

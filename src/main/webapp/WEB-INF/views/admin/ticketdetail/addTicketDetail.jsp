@@ -32,7 +32,7 @@
 							<label for="">Chọn Mã Chuyến Bay :</label>
 							<form:select path="maChuyenBay.maChuyenBay"
 								cssClass="form-control">
-								<form:options items="${chuyenBays}" itemLabel="maChuyenBay"
+								<form:options items="${chuyenBays}" itemLabel="tenChuyenBay"
 									itemValue="maChuyenBay" />
 							</form:select>
 						</div>

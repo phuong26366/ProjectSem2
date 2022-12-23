@@ -204,15 +204,15 @@
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Quản Lý Vé Máy Bay</span> <span
+							class="fa fa-dashboard"></i> <span>Quản Lý Thông Tin Vé</span> <span
 							class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 						<ul class="treeview-menu">
 							<li><a
-								href="${pageContext.request.contextPath}/ordersImport/data"><i
-									class="fa fa-circle-o"></i>Chi Tiết Vé Máy Bay</a></li>
+								href="${pageContext.request.contextPath}/ticketdetail/index"><i
+									class="fa fa-circle-o"></i>Chi Tiết Thông Tin Vé</a></li>
 						</ul>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
@@ -268,14 +268,8 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a
-								href="${pageContext.request.contextPath}/ordersImport/data"><i
-									class="fa fa-circle-o"></i>Doanh Thu Tháng</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/ordersImport/data"><i
-									class="fa fa-circle-o"></i>Vé Bán Ra</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/ordersImport/data"><i
-									class="fa fa-circle-o"></i>Báo Cáo Nhân Viên</a></li>
+								href="${pageContext.request.contextPath}/statistic/index"><i
+									class="fa fa-circle-o"></i>Doanh Thu</a></li>
 						</ul>
 				</ul>
 			</section>
@@ -296,13 +290,13 @@
 			</section>
 			<c:choose>
 				<c:when test="${empty err}">
-					<div class="alert alert-success" style="display: none">
+					<div class="alert alert-danger" style="display: none">
 						<button type="button" class="close" data-dismiss="alert"
 							aria-hidden="true">&times;</button>
 					</div>
 				</c:when>
 				<c:otherwise>
-					<div class="alert alert-success">
+					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert"
 							aria-hidden="true">&times;</button>
 						${err}

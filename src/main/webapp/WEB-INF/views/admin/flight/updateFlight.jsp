@@ -85,11 +85,11 @@
 						<form:errors cssClass="erorr" path="trangThai" />
 						<div class="radio">
 							<label><form:radiobutton path="trangThai" value="true" />
-								Sắp Bay </label>
+								<span class="label label-success">Sắp Bay</span> </label>
 						</div>
 						<div class="radio">
 							<label><form:radiobutton path="trangThai" value="false" />
-								Đã Bay </label>
+								<span class="label label-success">Đã Bay</span></label>
 						</div>
 					</div>
 				</div>

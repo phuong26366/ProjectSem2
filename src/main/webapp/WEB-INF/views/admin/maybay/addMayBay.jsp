@@ -49,9 +49,9 @@
 						<div class="form-group">
 							<label for="">Trạng Thái:</label>
 							<form:radiobutton path="trangThai" value="true" />
-							Bảo Trì
+							<span class="label label-success">Hoạt Động</span>
 							<form:radiobutton path="trangThai" value="false" />
-							Hoạt Động <br>
+							<span class="label label-success">Bảo Trì</span><br>
 							<form:errors path="trangThai" cssClass="erorr" />
 						</div>
 					</div>

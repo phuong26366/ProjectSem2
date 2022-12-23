@@ -17,7 +17,6 @@ public class Staff {
 	@Column(name = "maNhanVien")
 	private int maNhanVien ;
 	@Column(name = "anh")
-	@NotEmpty(message = "Ảnh không được để trống ")
 	private String image ;
 	@Column(name = "tenNhanVien")
 	@NotEmpty(message = "Tên nhân viên không được để trống ")

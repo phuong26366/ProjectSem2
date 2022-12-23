@@ -1,7 +1,10 @@
 package com.controller.staff;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
-
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,15 +15,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.model.Staff;
 import com.reponsitory.StaffReponsitory;
-
 
 @Controller
 @RequestMapping(value = "/staff")
 public class StaffController {
 	@Autowired
 	private StaffReponsitory staffReponsitory;
+	@Autowired
+	private ServletContext servletContext;
 
 	@RequestMapping(value = { "", "/index" })
 	public String getListProduct(Model model,
@@ -54,11 +60,24 @@ public class StaffController {
 	}
 
 	@PostMapping(value = "/insert")
-	public String insert(@Valid @ModelAttribute("m") Staff m, BindingResult bindingResult, Model model) {
+	public String insert(@Valid @ModelAttribute("m") Staff m, BindingResult bindingResult,
+			@RequestParam MultipartFile upload, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("m", m);
 			return "admin/staff/addStaff";
 		} else {
+			if (upload != null || !upload.isEmpty()) {
+
+				String fileName = servletContext.getRealPath("/") + "resources\\images\\"
+						+ upload.getOriginalFilename();
+				m.setImage(upload.getOriginalFilename());
+				try {
+					upload.transferTo(new File(fileName));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
 			boolean bl = staffReponsitory.add(m);
 			if (bl) {
 				return "redirect:/staff/index";
@@ -69,27 +88,54 @@ public class StaffController {
 			}
 		}
 	}
+
 	@GetMapping(value = "/preUpdate")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
-		Staff  m = staffReponsitory.getById(id);
+		Staff m = staffReponsitory.getById(id);
 		model.addAttribute("m", m);
 		return "admin/staff/updateStaff";
 	}
+
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("m") Staff m, Model model) {
-		boolean bl = staffReponsitory.edit(m);
-		if (bl) {
-			model.addAttribute("err", "Cập Nhật Thành Công");
-			return "redirect:/staff/index";
-		} else {
+	public String update(@Valid @ModelAttribute("m") Staff m, BindingResult bindingResult,
+			@RequestParam MultipartFile upload, Model model) {
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("m", m);
-			model.addAttribute("err", "Cập Nhật Không Thành Công");
 			return "admin/staff/updateStaff";
+		} else {
+			if (upload != null || !upload.isEmpty()) {
+
+				String fileName = servletContext.getRealPath("/") + "resources\\images\\"
+						+ upload.getOriginalFilename();
+				m.setImage(upload.getOriginalFilename());
+				try {
+					upload.transferTo(new File(fileName));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			boolean bl = staffReponsitory.edit(m);
+			if (bl) {
+				return "redirect:/staff/index";
+			} else {
+				model.addAttribute("m", m);
+				model.addAttribute("err", "Cập Nhật Không Thành Công");
+				return "admin/staff/updateStaff";
+			}
 		}
 	}
+
 	@RequestMapping(value = "/delete")
 	public String xoa(@RequestParam("id") Integer id, Model model) {
 		staffReponsitory.delete(id);
 		return "redirect:/staff/index";
+	}
+
+	@RequestMapping(value = "/info")
+	public String chitiet(@RequestParam("id") Integer id, Model model) {
+		Staff s = staffReponsitory.getById(id);
+		model.addAttribute("s", s);
+		return "admin/staff/detailStaff";
 	}
 }

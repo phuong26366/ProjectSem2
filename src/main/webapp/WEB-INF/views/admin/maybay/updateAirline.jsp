@@ -29,7 +29,7 @@
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
-						<form:input path="maMayBay" type="hidden"/>	
+							<form:input path="maMayBay" type="hidden" />
 							<label for="">Tên Máy Bay :</label>
 							<form:input path="tenMayBay" cssClass="form-control" />
 							<br>
@@ -50,9 +50,9 @@
 						<div class="form-group">
 							<label for="">Trạng Thái:</label>
 							<form:radiobutton path="trangThai" value="true" />
-							Bảo Trì
+							<span class="label label-success">Hoạt Động</span>
 							<form:radiobutton path="trangThai" value="false" />
-							Hoạt Động <br>
+							<span class="label label-success">Bảo Trì</span> <br>
 							<form:errors path="trangThai" cssClass="erorr" />
 						</div>
 					</div>

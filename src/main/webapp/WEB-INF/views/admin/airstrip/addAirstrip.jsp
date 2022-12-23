@@ -43,10 +43,10 @@
 						<div class="form-group">
 							<label for="">Trạng Thái:</label> <br>
 							<form:radiobutton path="trangThai" value="true" />
-							Hoạt Động
+							<span class="label label-success">Hoạt Động</span>
 							<div></div>
 							<form:radiobutton path="trangThai" value="false" />
-							Bảo Trì <br>
+							<span class="label label-success">Bảo Trì</span> <br>
 							<form:errors path="trangThai" cssClass="erorr" />
 						</div>
 					</div>
