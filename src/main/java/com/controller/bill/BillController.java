@@ -1,4 +1,4 @@
-package com.controller.ticketdetail;
+package com.controller.bill;
 
 import java.util.List;
 
@@ -12,18 +12,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.model.ChuyenBay;
-import com.model.TicketDetail;
-import com.reponsitory.FlightReponsitory;
-import com.reponsitory.TicketDetailReponsitory;
+import com.model.Bill;
+import com.reponsitory.BillReponsitory;
+
 
 @Controller
-@RequestMapping(value = "/ticketdetail")
-public class TicketDetailController {
+@RequestMapping(value = "/bill")
+public class BillController {
 	@Autowired
-	private TicketDetailReponsitory ticketDetailReponsitory;
-	@Autowired
-	private FlightReponsitory chyenBayReponsitory;
+	private BillReponsitory billReponsitory;
 
 	@RequestMapping(value = { "", "/index" })
 	public String getListProduct(Model model,
@@ -31,42 +28,36 @@ public class TicketDetailController {
 			@RequestParam(value = "name", required = false, defaultValue = "") String name) {
 		int pageSize = 3;
 		int firstResult = (page - 1) * pageSize;
-		List<TicketDetail> products;
+		List<Bill> products;
 		Long totalRecords;
-		products = ticketDetailReponsitory.findAll();
-		totalRecords = ticketDetailReponsitory.countTotalRecords(null);
+		products = billReponsitory.findAll();
+		totalRecords = billReponsitory.countTotalRecords(null);
 		model.addAttribute("pros", products);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("totalRecords", totalRecords);
 		model.addAttribute("page", page);
 		model.addAttribute("name", name);
-		return "admin/ticketdetail/ticketDetailIndex";
+		return "admin/bill/billIndex";
 	}
 
 	@GetMapping(value = "/initInsert")
 	public String add(Model model) {
-		TicketDetail m = new TicketDetail();
-		List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
+		Bill m = new Bill();
 		model.addAttribute("m", m);
-		model.addAttribute("chuyenBays", chuyenBays);
 		return "admin/ticketdetail/addTicketDetail";
 	}
 
 	@PostMapping(value = "/insert")
-	public String insert(@Valid @ModelAttribute("m") TicketDetail m, BindingResult bindingResult, Model model) {
+	public String insert(@Valid @ModelAttribute("m") Bill m, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
-			List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
 			model.addAttribute("m", m);
-			model.addAttribute("chuyenBays", chuyenBays);
 			return "admin/ticketdetail/addTicketDetail";
 		} else {
-			boolean bl = ticketDetailReponsitory.add(m);
+			boolean bl = billReponsitory.add(m);
 			if (bl) {
 				return "redirect:/ticketdetail/index";
 			} else {
-				List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
 				model.addAttribute("m", m);
-				model.addAttribute("chuyenBays", chuyenBays);
 				model.addAttribute("err", "Thêm Mới Không Thành Công");
 				return "admin/ticketdetail/addTicketDetail";
 			}
@@ -75,23 +66,19 @@ public class TicketDetailController {
 
 	@GetMapping(value = "/preUpdate")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
-		TicketDetail m = ticketDetailReponsitory.getById(id);
-		List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
+		Bill m = billReponsitory.getById(id);
 		model.addAttribute("m", m);
-		model.addAttribute("chuyenBays", chuyenBays);
 		return "admin/ticketdetail/updateTicketDetail";
 	}
 
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("m") TicketDetail m, Model model) {
-		boolean bl = ticketDetailReponsitory.edit(m);
+	public String update(@ModelAttribute("m") Bill m, Model model) {
+		boolean bl = billReponsitory.edit(m);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");
 			return "redirect:/ticketdetail/index";
 		} else {
-			List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
 			model.addAttribute("m", m);
-			model.addAttribute("chuyenBays", chuyenBays);
 			model.addAttribute("err", "Cập Nhật Không Thành Công");
 			return "admin/ticketdetail/updateTicketDetail";
 		}
@@ -99,7 +86,7 @@ public class TicketDetailController {
 
 	@RequestMapping(value = "/delete")
 	public String xoa(@RequestParam("id") Integer id, Model model) {
-		ticketDetailReponsitory.delete(id);
-		return "redirect:/ticketdetail/index";	
+		billReponsitory.delete(id);
+		return "redirect:/ticketdetail/index";
 	}
 }

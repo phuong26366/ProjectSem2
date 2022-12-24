@@ -45,7 +45,7 @@
 					class="icon-bar"></span>
 				</a>
 
-				
+
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 						<!-- Messages: style can be found in dropdown.less-->
@@ -177,10 +177,9 @@
 						</ul></li>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
-					<li class="treeview"><a href="#"> <i
-							class="fa fa-product-hunt"></i> <span>Quản Lý Máy Bay</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
+					<li class="treeview"><a href="#"> <i class="fa fa-plane"></i>
+							<span>Quản Lý Máy Bay</span> <span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 						<ul class="treeview-menu">
@@ -191,20 +190,45 @@
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Quản Lý Nhân Viên</span> <span
+							class="fa fa-fighter-jet"></i> <span>Quản Lý Chuyến Bay</span> <span
 							class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 						<ul class="treeview-menu">
 							<li><a
-								href="${pageContext.request.contextPath}/staff/index"><i
-									class="fa fa-circle-o"></i>Chi Tiết Nhân Viên</a></li>
+								href="${pageContext.request.contextPath}/flight/index"><i
+									class="fa fa-circle-o"></i>Chi Tiết Chuyến Bay</a></li>
 						</ul>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Quản Lý Thông Tin Vé</span> <span
+							class="fa fa-user-circle"></i> <span>Quản Lý Nhân Viên</span> <span
+							class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+						<ul class="treeview-menu">
+							<li><a href="${pageContext.request.contextPath}/staff/index"><i
+									class="fa fa-circle-o"></i>Thông Tin Nhân Viên</a></li>
+						</ul>
+				</ul>
+				<ul class="sidebar-menu" data-widget="tree">
+					<li class="treeview"><a href="#"> <i class="fa fa-users"></i>
+							<span>Quản Lý Khách Hàng</span> <span
+							class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span>
+					</a>
+						<ul class="treeview-menu">
+							<li><a
+								href="${pageContext.request.contextPath}/customer/index"><i
+									class="fa fa-circle-o"></i>Thông Tin Khách Hàng</a></li>
+						</ul>
+				</ul>
+				<ul class="sidebar-menu" data-widget="tree">
+					<li class="treeview"><a href="#"> <i class="fa fa-ticket"></i>
+							<span>Quản Lý Thông Tin Vé</span> <span
 							class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
 						</span>
@@ -217,51 +241,20 @@
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Quản Lý Hóa Đơn</span> <span
+							class="fa fa-shopping-cart"></i> <span>Quản Lý Hóa Đơn</span> <span
 							class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a
-								href="${pageContext.request.contextPath}/ordersImport/data"><i
+							<li><a href="${pageContext.request.contextPath}/bill/index"><i
 									class="fa fa-circle-o"></i>Chi Tiết Hóa Đơn</a></li>
 						</ul>
 				</ul>
-				</ul>
+
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Quản Lý Chuyến Bay</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-						<ul class="treeview-menu">
-							<li><a
-								href="${pageContext.request.contextPath}/flight/index"><i
-									class="fa fa-circle-o"></i>Chi Tiết Chuyến Bay</a></li>
-						</ul>
-				</ul>
-				</ul>
-				</ul>
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Quản Lý Khách Hàng</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-						<ul class="treeview-menu">
-							<li><a
-								href="${pageContext.request.contextPath}/ordersImport/data"><i
-									class="fa fa-circle-o"></i>Chi Tiết Khách Hàng</a></li>
-						</ul>
-				</ul>
-				</ul>
-				</ul>
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Thống Kê</span> <span
+							class="fa fa-line-chart"></i> <span>Thống Kê</span> <span
 							class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
 						</span>
