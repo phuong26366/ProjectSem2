@@ -45,9 +45,9 @@
 							<td>${stt }</td>
 							<td>${p.maHoaDon }</td>
 							<td>${p.maChuyenBays.tenChuyenBay }</td>
-							<td> <fmt:formatDate pattern="dd-MM-yyyy" value="${p.tGlap }"/>
+							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${p.tGlap }" />
 							</td>
-							<td><fmt:formatNumber value="${p.tongTien }" /></td>
+							<td><fmt:formatNumber value="${p.maThongTin.giaVe }" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -61,7 +61,7 @@
 					<table class="text-right" border="1">
 						<tr>
 							<th>Tổng Doanh Thu :</th>
-							<th>  ${tt} VNĐ</th>
+							<th><fmt:formatNumber value="${tt }" /> VNĐ</th>
 						</tr>
 					</table>
 				</div>

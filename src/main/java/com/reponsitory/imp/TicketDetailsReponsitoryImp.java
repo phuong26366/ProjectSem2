@@ -9,6 +9,8 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.model.ChuyenBay;
 import com.model.TicketDetail;
 import com.reponsitory.TicketDetailReponsitory;
 
@@ -56,16 +58,14 @@ public class TicketDetailsReponsitoryImp implements TicketDetailReponsitory {
 	}
 
 	@Override
-	public List<TicketDetail> findAll(int position, int pageSize, String name) {
+	public List<TicketDetail> findAll(ChuyenBay maChuyenBay) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(TicketDetail.class)
-					.add(Restrictions.like("loaiVe", "%" + name + "%"));
-			criteria.setFirstResult(position);
-			criteria.setMaxResults(pageSize);
+					.add(Restrictions.eq("maChuyenBay", maChuyenBay));
 			return criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();

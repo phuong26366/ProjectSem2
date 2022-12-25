@@ -43,11 +43,11 @@
 				<tbody>
 					<c:forEach items="${pros}" var="pro">
 						<tr>
-							<td>${p.maHoaDon }</td>
-							<td>${p.maChuyenBays.tenChuyenBay }</td>
-							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${p.tGlap }" />
+							<td>${pro.maHoaDon }</td>
+							<td>${pro.maChuyenBays.tenChuyenBay }</td>
+							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${pro.tGlap }" />
 							</td>
-							<td><fmt:formatNumber value="${p.tongTien }" /></td>
+							<td><fmt:formatNumber value="${pro.maThongTin.giaVe }" /></td>
 							<td><a class="btn btn-small btn-warning"
 								href="${pageContext.request.contextPath}/bill/preUpdate?id=${pro.maHoaDon}">Cập
 									Nhật</a> <a class="btn btn-small btn-danger"
@@ -66,7 +66,7 @@
 					<c:forEach begin="1" end="${Math.ceil(totalRecords/pageSize)}"
 						var="i">
 						<li class="page-item"><a class="page-link" id="${i}"
-							href="${pageContext.request.contextPath}/bill?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
+							href="${pageContext.request.contextPath}/bill?page=${i}">${i}</a>
 						</li>
 					</c:forEach>
 				</ul>

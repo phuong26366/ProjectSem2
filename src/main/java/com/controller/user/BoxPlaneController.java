@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -15,16 +16,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.model.Bill;
 import com.model.ChuyenBay;
-
-import com.reponsitory.AirstripReponsitory;
+import com.model.Customer;
+import com.model.DuongBay;
+import com.model.TicketDetail;
+import com.reponsitory.BillReponsitory;
+import com.reponsitory.CustomerReponsitory;
 import com.reponsitory.FlightReponsitory;
+import com.reponsitory.TicketDetailReponsitory;
 
 @Controller
 @RequestMapping(value = "/box-plane")
 public class BoxPlaneController {
 	@Autowired
 	private FlightReponsitory flightReponsitory;
+	@Autowired
+	private TicketDetailReponsitory ticketDetailReponsitory;
+
+	@Autowired
+	private CustomerReponsitory customerReponsitory;
+	@Autowired
+	private BillReponsitory billReponsitory;
 
 	@RequestMapping(value = { "", "/index" })
 	public String getListProduct(Model model) {
@@ -36,57 +49,66 @@ public class BoxPlaneController {
 			@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			@RequestParam(value = "diemDi", required = false, defaultValue = "") String diemDi,
 			@RequestParam(value = "diemDen", required = false, defaultValue = "") String diemDen,
-			@RequestParam(value = "date", required = false, defaultValue = "") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date ) {
+			@RequestParam(value = "date", required = false, defaultValue = "") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
 		int pageSize = 3;
 		int firstResult = (page - 1) * pageSize;
 		List<ChuyenBay> products;
 		Long totalRecords;
-//		if (name == "") {
-//			totalRecords = chyenBayReponsitory.countTotalRecords(null);
-//			products = chyenBayReponsitory.findAll(firstResult, pageSize);
-//		} else {
-//			totalRecords = chyenBayReponsitory.countTotalRecords(name);
-//			products = chyenBayReponsitory.findAll(firstResult, pageSize, name);
-//		}
 		products = flightReponsitory.findAll(firstResult, pageSize, diemDi, diemDen, date);
 		model.addAttribute("pros", products);
 		model.addAttribute("pageSize", pageSize);
-//		model.addAttribute("totalRecords", totalRecords);
 		model.addAttribute("page", page);
-//		model.addAttribute("name", name);
 		return "admin/datVeMayBay/listSearchFlight";
 	}
 
-//	@PostMapping(value = "/insert")
-//	public String insert(@Valid @ModelAttribute("m") DuongBay m, BindingResult bindingResult, Model model) {
-//		if (bindingResult.hasErrors()) {
-//			model.addAttribute("m", m);
-//			return "admin/airstrip/addAirstrip";
-//		} else {
-//			List<DuongBay> duongBay = airstripReponsitory.findAll();
-//			for (DuongBay duongBay1 : duongBay) {
-//				if (m.getTenDuongBay().equalsIgnoreCase(duongBay1.getTenDuongBay()) == true) {
-//					model.addAttribute("err", "Tên máy bay đã tồn tại");
-//					return "admin/maybay/addMayBay";
-//				}
-//			}
-//			boolean bl = airstripReponsitory.add(m);
-//			if (bl) {
-//				return "redirect:/airstrip/index";
-//			} else {
-//				model.addAttribute("m", m);
-//				model.addAttribute("err", "Thêm Mới Không Thành Công");
-//				return "admin/airstrip/airstripIndex";
-//			}
-//		}
-//	}
-//
-//	@GetMapping(value = "/preUpdate")
-//	public String preUpdate(@RequestParam("id") Integer id, Model model) {
-//		DuongBay m = airstripReponsitory.getById(id);
-//		model.addAttribute("m", m);
-//		return "admin/airstrip/updateAirstrip";
-//	}
+	@GetMapping(value = "/initBill")
+	public String preUpdate(@RequestParam("id") Integer id, Model model) {
+		Customer m = new Customer();
+		ChuyenBay c = flightReponsitory.getById(id);
+		List<TicketDetail> list = ticketDetailReponsitory.findAll(c);
+		model.addAttribute("c", c);
+		model.addAttribute("m", m);
+		model.addAttribute("list", list);
+		return "admin/datVeMayBay/addNewBill";
+	}
+
+	@PostMapping(value = "/insert")
+	public String insert(@Valid @ModelAttribute("m") Customer m, BindingResult bindingResult,
+			@RequestParam(value = "maThongTin", required = false) Integer maThongTin,
+			@RequestParam(value = "id", required = false) Integer maChuyenBay, Model model) {
+		System.out.println(maChuyenBay);
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("m", m);
+			ChuyenBay c = flightReponsitory.getById(maChuyenBay);
+			List<TicketDetail> list = ticketDetailReponsitory.findAll(c);
+			model.addAttribute("c", c);
+			model.addAttribute("m", m);
+			model.addAttribute("list", list);
+			return "admin/datVeMayBay/addNewBill";
+		} else {
+			Boolean bl = customerReponsitory.add(m);
+			if (bl) {
+				Bill b = new Bill();
+				ChuyenBay c = flightReponsitory.getById(maChuyenBay);
+				TicketDetail t = ticketDetailReponsitory.getById(maThongTin);
+				b.setMaChuyenBays(c);
+				b.setMaThongTin(t);
+				b.setMaKhachHang(m);
+				b.settGlap(new Date());
+				billReponsitory.add(b);
+				return "admin/datVeMayBay/searchFlight";
+			} else {
+				ChuyenBay c = flightReponsitory.getById(maChuyenBay);
+				List<TicketDetail> list = ticketDetailReponsitory.findAll(c);
+				model.addAttribute("c", c);
+				model.addAttribute("m", m);
+				model.addAttribute("list", list);
+				return "admin/datVeMayBay/addNewBill";
+			}
+
+		}
+	}
+
 //
 //	@PostMapping(value = "/update")
 //	public String update(@ModelAttribute("m") DuongBay m, Model model) {

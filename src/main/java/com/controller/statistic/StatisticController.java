@@ -16,7 +16,6 @@ import com.model.Bill;
 import com.model.TicketDetail;
 import com.reponsitory.BillReponsitory;
 
-
 @Controller
 @RequestMapping(value = "/statistic")
 public class StatisticController {
@@ -26,10 +25,10 @@ public class StatisticController {
 	@RequestMapping(value = { "", "/index" })
 	public String getListProduct(Model model) {
 		List<Bill> products;
-		int tt=0;
+		int tt = 0;
 		products = billReponsitory.findAll();
 		for (Bill bill : products) {
-			tt += bill.getTongTien();
+			tt += bill.getMaThongTin().getGiaVe();
 		}
 		int stt = 1;
 		model.addAttribute("pros", products);

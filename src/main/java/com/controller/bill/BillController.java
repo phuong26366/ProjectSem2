@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.model.Bill;
 import com.reponsitory.BillReponsitory;
 
-
 @Controller
 @RequestMapping(value = "/bill")
 public class BillController {

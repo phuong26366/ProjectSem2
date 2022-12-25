@@ -33,7 +33,7 @@ public class TicketDetailController {
 		int firstResult = (page - 1) * pageSize;
 		List<TicketDetail> products;
 		Long totalRecords;
-		products = ticketDetailReponsitory.findAll();
+		products = ticketDetailReponsitory.findAll(firstResult, pageSize);
 		totalRecords = ticketDetailReponsitory.countTotalRecords(null);
 		model.addAttribute("pros", products);
 		model.addAttribute("pageSize", pageSize);
@@ -100,6 +100,6 @@ public class TicketDetailController {
 	@RequestMapping(value = "/delete")
 	public String xoa(@RequestParam("id") Integer id, Model model) {
 		ticketDetailReponsitory.delete(id);
-		return "redirect:/ticketdetail/index";	
+		return "redirect:/ticketdetail/index";
 	}
 }

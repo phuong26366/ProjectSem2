@@ -59,20 +59,31 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${pros}" var="pro">
-										<tr>
-											<td>${pro.maMayBay.tenMayBay}</td>
-											<td>${pro.tenChuyenBay}</td>
-											<td><fmt:formatDate pattern="dd-MM-yyyy"
-													value="${pro.ngayBay}" /></td>
-											<td>${pro.gioBay}</td>
-											<td>${pro.diemDi}</td>
-											<td>${pro.diemDen}</td>
-											<td><a class="btn btn-small btn-success"
-												href="${pageContext.request.contextPath}/box-plane/preUpdate?id=${pro.maChuyenBay}">Chọn</a>
-											</td>
-										</tr>
-									</c:forEach>
+									<c:choose>
+										<c:when test="${pros.size()==0}">
+											<div class="alert alert-danger mt">
+												<button type="button" class="close" data-dismiss="alert"
+													aria-hidden="true">&times;</button>
+												<strong>Chuyến bay</strong> Không có dữ liệu nào...
+											</div>
+										</c:when>
+										<c:otherwise>
+											<c:forEach items="${pros}" var="pro">
+												<tr>
+													<td>${pro.maMayBay.tenMayBay}</td>
+													<td>${pro.tenChuyenBay}</td>
+													<td><fmt:formatDate pattern="dd-MM-yyyy"
+															value="${pro.ngayBay}" /></td>
+													<td>${pro.gioBay}</td>
+													<td>${pro.diemDi}</td>
+													<td>${pro.diemDen}</td>
+													<td><a class="btn btn-small btn-success"
+														href="${pageContext.request.contextPath}/box-plane/initBill?id=${pro.maChuyenBay}">Chọn</a>
+													</td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
 								</tbody>
 							</table>
 						</div>
