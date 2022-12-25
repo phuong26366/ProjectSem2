@@ -59,15 +59,15 @@
 							<br>
 							<form:errors cssClass="erorr" path="gioBay" />
 						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
 							<label for="">Ngày Bay :</label>
-							<form:input type="date" path="ngayBay" cssClass="form-control" />
+							<form:input type="date" path="ngayBay" id="txtDate"
+								cssClass="form-control" />
 							<br>
 							<form:errors cssClass="erorr" path="ngayBay" />
 						</div>
-
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
 							<label for="">Điểm Đi :</label>
 							<form:input path="diemDi" cssClass="form-control" />
@@ -88,7 +88,7 @@
 						</div>
 						<div class="radio">
 							<label><form:radiobutton path="trangThai" value="false" />
-								<span class="label label-success">Đã Bay</span> </label>
+								<span class="label label-danger">Đã Bay</span> </label>
 						</div>
 					</div>
 				</div>

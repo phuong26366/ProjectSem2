@@ -1,10 +1,12 @@
 package com.reponsitory.imp;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -154,6 +156,23 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 			session.close();
 		}
 		return false;
+	}
+
+	@Override
+	public List<ChuyenBay> findAll(int position, int pageSize, String diemDi, String diemDen, Date ngayBay) {
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(ChuyenBay.class).add(Restrictions.like("diemDi", "%" + diemDi + "%")).add(Restrictions.like("diemDen", "%" + diemDen + "%")).add(Restrictions.eq("ngayBay", ngayBay));
+			criteria.setMaxResults(pageSize);
+			return criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			session.close();
+		}
+		return null;
 	}
 
 }
