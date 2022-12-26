@@ -93,7 +93,7 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">Cập Nhật</button>
+				<button type="submit" class="btn btn-success">Cập Nhật</button>
 			</form:form>
 		</div>
 	</div>

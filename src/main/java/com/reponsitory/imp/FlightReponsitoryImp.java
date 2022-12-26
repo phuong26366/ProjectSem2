@@ -159,12 +159,12 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 	}
 
 	@Override
-	public List<ChuyenBay> findAll(int position, int pageSize, String diemDi, String diemDen, Date ngayBay) {
+	public List<ChuyenBay> findAll(int position, int pageSize, String diemDi, String diemDen, Date ngayBay ,  Boolean trangthai) {
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(ChuyenBay.class).add(Restrictions.like("diemDi", "%" + diemDi + "%")).add(Restrictions.like("diemDen", "%" + diemDen + "%")).add(Restrictions.eq("ngayBay", ngayBay));
+			Criteria criteria = session.createCriteria(ChuyenBay.class).add(Restrictions.like("diemDi", "%" + diemDi + "%")).add(Restrictions.like("diemDen", "%" + diemDen + "%")).add(Restrictions.eq("ngayBay", ngayBay)).add(Restrictions.eq("trangThai", trangthai));
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
 		} catch (Exception e) {

@@ -16,7 +16,7 @@
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
 				<a href="${pageContext.request.contextPath}/airstrip/initInsert"
-					class="btn btn-success btn-sm">Thêm mới</a>
+					class="btn btn-info ">Thêm mới</a>
 			</form>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
@@ -57,9 +57,9 @@
 										<span class="label label-danger">Bảo Trì</span>
 									</c:otherwise>
 								</c:choose></td>
-							<td><a class="btn btn-small btn-warning"
-								href="${pageContext.request.contextPath}/airstrip/preUpdate?id=${pro.maDuongBay}">Cập Nhật</a>
-								<a class="btn btn-small btn-danger"
+							<td><a class="btn btn-small btn-success"
+								href="${pageContext.request.contextPath}/airstrip/preUpdate?id=${pro.maDuongBay}">Cập
+									Nhật</a> <a class="btn btn-small btn-danger"
 								href="${pageContext.request.contextPath}/airstrip/delete?id=${pro.maDuongBay}"
 								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
 						</tr>
@@ -70,15 +70,14 @@
 		<!-- /.box-body -->
 		<!-- /.box-footer-->
 		<div class="box-footer text-center">
-				<ul class="pagination">
-					<c:forEach begin="1" end="${Math.ceil(totalRecords/pageSize)}"
-						var="i">
-						<li class="page-item"><a class="page-link" id="${i}"
-							href="${pageContext.request.contextPath}/airstrip?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
-						</li>
-					</c:forEach>
-				</ul>
-			</nav>
+			<ul class="pagination">
+				<c:forEach begin="1" end="${Math.ceil(totalRecords/pageSize)}"
+					var="i">
+					<li class="page-item"><a class="page-link" id="${i}"
+						href="${pageContext.request.contextPath}/airstrip?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
+					</li>
+				</c:forEach>
+			</ul>
 		</div>
 	</div>
 </section>

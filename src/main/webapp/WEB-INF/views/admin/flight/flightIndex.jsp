@@ -16,7 +16,7 @@
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
 				<a href="${pageContext.request.contextPath}/flight/initInsert"
-					class="btn btn-success btn-sm">Thêm mới</a>
+					class="btn btn-info">Thêm mới</a>
 			</form>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
@@ -39,7 +39,7 @@
 						<th>Ngày Bay</th>
 						<th>Giờ Bay</th>
 						<th>Điểm Đi</th>
-						<th>Điểm Đến </th>
+						<th>Điểm Đến</th>
 						<th>Trạng Thái</th>
 						<th></th>
 					</tr>
@@ -50,21 +50,22 @@
 							<td>${pro.maChuyenBay}</td>
 							<td>${pro.maMayBay.tenMayBay}</td>
 							<td>${pro.tenChuyenBay}</td>
-							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${pro.ngayBay}"/></td>
+							<td><fmt:formatDate pattern="dd-MM-yyyy"
+									value="${pro.ngayBay}" /></td>
 							<td>${pro.gioBay}</td>
 							<td>${pro.diemDi}</td>
 							<td>${pro.diemDen}</td>
 							<td><c:choose>
 									<c:when test="${pro.trangThai==true}">
-										<span class="label label-success">Chưa Bay</span>
+										<span class="label label-success">Sắp Bay</span>
 									</c:when>
 									<c:otherwise>
 										<span class="label label-danger">Đã Bay</span>
 									</c:otherwise>
 								</c:choose></td>
-							<td><a class="btn btn-small btn-warning"
-								href="${pageContext.request.contextPath}/flight/preUpdate?id=${pro.maChuyenBay}">Cập Nhật</a>
-								<a class="btn btn-small btn-danger"
+							<td><a class="btn btn-small btn-success"
+								href="${pageContext.request.contextPath}/flight/preUpdate?id=${pro.maChuyenBay}">Cập
+									Nhật</a> <a class="btn btn-small btn-danger"
 								href="${pageContext.request.contextPath}/flight/delete?id=${pro.maChuyenBay}"
 								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
 						</tr>

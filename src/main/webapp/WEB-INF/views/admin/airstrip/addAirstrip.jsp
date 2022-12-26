@@ -25,8 +25,8 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<div class="row">
-				<form:form action="insert" method="post" modelAttribute="m">
+			<form:form action="insert" method="post" modelAttribute="m">
+				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
 							<label for="">Tên Đường Bay :</label>
@@ -46,7 +46,7 @@
 							<span class="label label-success">Hoạt Động</span>
 							<div></div>
 							<form:radiobutton path="trangThai" value="false" />
-							<span class="label label-success">Bảo Trì</span> <br>
+							<span class="label label-danger">Bảo Trì</span> <br>
 							<form:errors path="trangThai" cssClass="erorr" />
 						</div>
 					</div>
@@ -64,9 +64,9 @@
 							<form:errors path="chieuRong" cssClass="erorr" />
 						</div>
 					</div>
-			</div>
+				</div>
 
-			<button type="submit" class="btn btn-success">Thêm Mới</button>
+				<button type="submit" class="btn btn-info">Thêm Mới</button>
 			</form:form>
 		</div>
 	</div>

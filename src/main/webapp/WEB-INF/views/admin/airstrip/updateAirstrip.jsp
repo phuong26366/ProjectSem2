@@ -25,8 +25,8 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<div class="row">
-				<form:form action="update" method="post" modelAttribute="m">
+			<form:form action="update" method="post" modelAttribute="m">
+				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
 							<form:input path="maDuongBay" type="hidden" />
@@ -47,7 +47,7 @@
 							<span class="label label-success">Hoạt Động</span>
 							<div></div>
 							<form:radiobutton path="trangThai" value="false" />
-							<span class="label label-success">Bảo Trì</span> <br>
+							<span class="label label-danger">Bảo Trì</span> <br>
 							<form:errors path="trangThai" cssClass="erorr" />
 						</div>
 					</div>
@@ -65,9 +65,8 @@
 							<form:errors path="chieuRong" cssClass="erorr" />
 						</div>
 					</div>
-			</div>
-
-			<button type="submit" class="btn btn-success">Cập Nhật</button>
+				</div>
+				<button type="submit" class="btn btn-success">Cập Nhật</button>
 			</form:form>
 		</div>
 	</div>

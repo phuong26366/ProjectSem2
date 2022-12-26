@@ -14,7 +14,7 @@
 		<div class="box-header with-border">
 			<h3 class="box-title">
 				THÊM MỚI NHÂN VIÊN
-				<h3>
+				</h3>
 					<div class="box-tools pull-right">
 						<button type="button" class="btn btn-box-tool"
 							data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -50,7 +50,7 @@
 								</label>
 							</div>
 							<div class="radio">
-								<label> <form:radiobutton path="chucVu" value="false" /><span class="label label-success">Nhân Viên</span>
+								<label> <form:radiobutton path="chucVu" value="false" /><span class="label btn-primary">Nhân Viên</span>
 								</label>
 							</div>
 							<form:errors path="chucVu" cssClass="erorr" />
@@ -64,26 +64,26 @@
 							<form:errors path="diaChi" cssClass="erorr" />
 						</div>
 						<div class="form-group">
-							<label for="">Số Điện Thoại</label>
+							<label for="">Số Điện Thoại :</label>
 							<form:input path="soDienThoai" cssClass="form-control" />
 							<br>
 							<form:errors path="soDienThoai" cssClass="erorr" />
 						</div>
 						<div class="form-group">
-							<label for="">Tài Khoản </label>
+							<label for="">Tài Khoản :</label>
 							<form:input path="userName" cssClass="form-control" />
 							<br>
 							<form:errors path="userName" cssClass="erorr" />
 						</div>
 						<div class="form-group">
-							<label for="">Mật Khẩu </label>
+							<label for="">Mật Khẩu :</label>
 							<form:input path="password" cssClass="form-control" />
 							<br>
 							<form:errors path="password" cssClass="erorr" />
 						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">Thêm mới</button>
+				<button type="submit" class="btn btn-info">Thêm mới</button>
 			</form:form>
 		</div>
 	</div>

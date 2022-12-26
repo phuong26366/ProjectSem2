@@ -16,7 +16,7 @@
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
 				<a href="${pageContext.request.contextPath}/maybay/initInsert"
-					class="btn btn-success btn-sm">Thêm mới</a>
+					class="btn btn-info">Thêm mới</a>
 			</form>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
@@ -62,7 +62,7 @@
 										<span class="label label-danger">Bảo Trì</span>
 									</c:otherwise>
 								</c:choose></td>
-							<td><a class="btn btn-small btn-warning"
+							<td><a class="btn btn-small btn-success"
 								href="${pageContext.request.contextPath}/maybay/preUpdate?id=${pro.maMayBay}">Cập Nhật</a>
 								<a class="btn btn-small btn-danger"
 								href="${pageContext.request.contextPath}/maybay/delete?id=${pro.maMayBay}"

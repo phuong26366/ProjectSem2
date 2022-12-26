@@ -41,17 +41,17 @@
 							<form:errors path="hangSanXuat" cssClass="erorr" />
 						</div>
 						<div class="form-group">
-							<label for="">Kích Thước :</label> <
+							<label for="">Kích Thước :</label>
 							<form:input path="kichThuoc" cssClass="form-control" />
 							<br>
 							<form:errors path="kichThuoc" cssClass="erorr" />
 						</div>
 						<div class="form-group">
-							<label for="">Trạng Thái:</label>
+							<label for="">Trạng Thái:</label><br>
 							<form:radiobutton path="trangThai" value="true" />
-							<span class="label label-success">Hoạt Động</span>
+							<span class="label label-success">Hoạt Động</span><br>
 							<form:radiobutton path="trangThai" value="false" />
-							<span class="label label-success">Bảo Trì</span><br>
+							<span class="label label-danger">Bảo Trì</span>
 							<form:errors path="trangThai" cssClass="erorr" />
 						</div>
 					</div>
@@ -77,7 +77,7 @@
 					</div>
 				</div>
 
-				<button type="submit" class="btn btn-success">Thêm Mới</button>
+				<button type="submit" class="btn btn-info">Thêm Mới</button>
 
 			</form:form>
 

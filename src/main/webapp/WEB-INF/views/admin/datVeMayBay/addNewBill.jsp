@@ -18,6 +18,11 @@
 	href="${pageContext.request.contextPath}/cssUser/css/bootstrap.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/cssUser/css/style.css" />
+<style>
+.erorr {
+	color: red;
+}
+</style>
 </head>
 
 <body>
@@ -74,10 +79,10 @@
 										</div>
 									</div>
 								</div>
+								<h4>Thông Tin Chuyến Bay Lựa Chọn :</h4>
 								<div class="row">
-									<h4>Thông Tin Chuyến Bay Lựa Chọn :</h4>
 									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<input name="id" value="${c.maChuyenBay}" type="hidden">
+										<input name="id" value="${c.maChuyenBay}" type="hidden">
 										<div class="form-group">
 											<label for="">Tên Chuyến Bay :</label>
 											<h4>${c.tenChuyenBay}</h4>
@@ -109,19 +114,19 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Loại Vé</span> <select
 												name="maThongTin" class="form-control">
 												<c:forEach items="${list}" var="l">
 													<option value="${l.maThongTin }"><c:choose>
 															<c:when test="${l.loaiVe==true}">
-																<span class="label label-success">Thương Gia</span>
-																</label>
+																<span class="label label-success">Thương Gia</span> : <fmt:formatNumber
+																	value="${l.giaVe } " /> VNĐ															
 															</c:when>
 															<c:otherwise>
-																<span class="label label-primary">Thường</span>
-																</label>
+																<span class="label label-primary">Thường</span>: <fmt:formatNumber
+																	value="${l.giaVe } " /> VNĐ																
 															</c:otherwise>
 														</c:choose></option>
 												</c:forEach>
@@ -130,10 +135,8 @@
 									</div>
 								</div>
 								<div class="form-btn">
-									<button class="submit-btn">Show flights</button>
+									<button class="submit-btn">Đặt Vé</button>
 								</div>
-
-
 							</form:form>
 						</div>
 					</div>

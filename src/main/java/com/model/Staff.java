@@ -1,10 +1,13 @@
 package com.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -39,14 +42,16 @@ public class Staff {
 	@Column(name = "trangThai")
 	@NotNull(message = "Vui long chọn ! ")
 	private boolean trangThai;
-	public Staff(int maNhanVien, @NotEmpty(message = "Ảnh không được để trống ") String image,
+	@OneToMany(mappedBy = "maNhanVien")
+	private List<UserRole> users;
+	public Staff(int maNhanVien, String image,
 			@NotEmpty(message = "Tên nhân viên không được để trống ") String tenNhanVien,
 			@NotEmpty(message = "Số điện thoại không được để trống ") String soDienThoai,
 			@NotEmpty(message = "Địa chỉ không được để trống ") String diaChi,
 			@NotNull(message = "Vui long chọn ! ") boolean chucVu,
 			@NotEmpty(message = "Tài khoản không được để trống ") String userName,
 			@NotEmpty(message = "Mật khẩu không được để trống ") String password,
-			@NotNull(message = "Vui long chọn ! ") boolean trangThai) {
+			@NotNull(message = "Vui long chọn ! ") boolean trangThai, List<UserRole> users) {
 		super();
 		this.maNhanVien = maNhanVien;
 		this.image = image;
@@ -57,6 +62,7 @@ public class Staff {
 		this.userName = userName;
 		this.password = password;
 		this.trangThai = trangThai;
+		this.users = users;
 	}
 	public Staff() {
 		super();
@@ -115,5 +121,10 @@ public class Staff {
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
-	
+	public List<UserRole> getUsers() {
+		return users;
+	}
+	public void setUsers(List<UserRole> users) {
+		this.users = users;
+	}
 }

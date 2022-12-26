@@ -55,11 +55,12 @@
 							<br>
 							<form:errors path="giaVe" cssClass="erorr" />
 						</div>
-						<button type="submit" class="btn btn-success">Cập Nhật Mới</button>
-					</div>		
+						<button type="submit" class="btn btn-success">Cập Nhật</button>
+					</div>
 				</div>
 			</form:form>
 		</div>
-		<!-- /.box -->
+	</div>
+	<!-- /.box -->
 </section>
 <%@ include file="../../layout/footer.jsp"%>

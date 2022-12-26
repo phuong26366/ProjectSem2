@@ -16,7 +16,7 @@
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
 				<a href="${pageContext.request.contextPath}/ticketdetail/initInsert"
-					class="btn btn-success btn-sm">Thêm mới</a>
+					class="btn btn-info ">Thêm mới</a>
 			</form>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
@@ -53,7 +53,7 @@
 									</c:otherwise>
 								</c:choose></td>
 							<td><fmt:formatNumber value="${pro.giaVe}" /></td>
-							<td><a class="btn btn-small btn-warning"
+							<td><a class="btn btn-small btn-success"
 								href="${pageContext.request.contextPath}/ticketdetail/preUpdate?id=${pro.maThongTin}">Cập
 									Nhật</a> <a class="btn btn-small btn-danger"
 								href="${pageContext.request.contextPath}/ticketdetail/delete?id=${pro.maThongTin}"

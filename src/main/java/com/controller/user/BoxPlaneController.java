@@ -54,7 +54,7 @@ public class BoxPlaneController {
 		int firstResult = (page - 1) * pageSize;
 		List<ChuyenBay> products;
 		Long totalRecords;
-		products = flightReponsitory.findAll(firstResult, pageSize, diemDi, diemDen, date);
+		products = flightReponsitory.findAll(firstResult, pageSize, diemDi, diemDen, date,true);
 		model.addAttribute("pros", products);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("page", page);

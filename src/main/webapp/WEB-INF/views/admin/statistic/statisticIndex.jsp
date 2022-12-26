@@ -9,7 +9,6 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title"></h3>
-
 		</div>
 		<div class="box-body">
 			<div class="row">
@@ -32,7 +31,6 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>STT</th>
 						<th>Mã Hóa Đơn</th>
 						<th>Tên Chuyến Bay</th>
 						<th>Ngày Lập</th>
@@ -40,9 +38,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${pros }" var="p">
+					<c:forEach  items="${pros }" var="p" >
 						<tr>
-							<td>${stt }</td>
 							<td>${p.maHoaDon }</td>
 							<td>${p.maChuyenBays.tenChuyenBay }</td>
 							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${p.tGlap }" />

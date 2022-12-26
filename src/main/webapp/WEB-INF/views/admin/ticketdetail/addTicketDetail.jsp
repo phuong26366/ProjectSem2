@@ -54,7 +54,7 @@
 							<br>
 							<form:errors path="giaVe" cssClass="erorr" />
 						</div>
-						<button type="submit" class="btn btn-success">Thêm Mới</button>
+						<button type="submit" class="btn btn-info">Thêm Mới</button>
 					</div>		
 				</div>
 			</form:form>

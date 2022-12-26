@@ -26,11 +26,11 @@ public class StatisticController {
 	public String getListProduct(Model model) {
 		List<Bill> products;
 		int tt = 0;
+		int stt = 0;
 		products = billReponsitory.findAll();
 		for (Bill bill : products) {
 			tt += bill.getMaThongTin().getGiaVe();
 		}
-		int stt = 1;
 		model.addAttribute("pros", products);
 		model.addAttribute("stt", stt);
 		model.addAttribute("tt", tt);

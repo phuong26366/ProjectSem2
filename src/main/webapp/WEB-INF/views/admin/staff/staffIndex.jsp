@@ -19,7 +19,7 @@
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
 				<a href="${pageContext.request.contextPath}/staff/initInsert"
-					class="btn btn-success btn-sm">Thêm Mới Nhân Viên</a>
+					class="btn btn-info">Thêm Mới </a>
 			</form>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"

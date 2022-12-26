@@ -92,7 +92,7 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary">Add NEW</button>
+				<button type="submit" class="btn btn-info">Thêm Mới</button>
 			</form:form>
 		</div>
 	</div>
