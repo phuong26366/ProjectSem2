@@ -11,5 +11,5 @@ public interface StaffReponsitory {
 	boolean add(Staff t);
 	boolean edit(Staff t);
 	public Boolean delete(Integer id);
-
+	Staff getByName(String name);
 }

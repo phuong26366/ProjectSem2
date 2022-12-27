@@ -54,7 +54,7 @@ create table nhanvien(
 	diaCHi nvarchar(100) not null ,
 	chucVu bit default(10),
 	userName varchar(100) not null unique ,
-	passWord varchar(50) not null ,
+	passWord varchar(300) not null ,
 	trangThai bit default(0),
 )
 

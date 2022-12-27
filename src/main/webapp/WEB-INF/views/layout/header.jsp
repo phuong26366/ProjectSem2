@@ -135,7 +135,7 @@
 										<a href="#" class="btn btn-default btn-flat">Profile</a>
 									</div>
 									<div class="pull-right">
-										<a href="${pageContext.request.contextPath}/logOutHomeAdmin"
+										<a href="${pageContext.request.contextPath}/j_spring_security_logout"
 											class="btn btn-default btn-flat">Sign out</a>
 									</div>
 								</li>
@@ -274,13 +274,6 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
-			<section class="content-header">
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Examples</a></li>
-					<li class="active">Blank page</li>
-				</ol>
-			</section>
 			<c:choose>
 				<c:when test="${empty err}">
 					<div class="alert alert-danger" style="display: none">

@@ -25,7 +25,9 @@
 		<property name="maxUploadSize" value="20000000"></property>
 	</bean>
 	<mvc:default-servlet-handler />
-
+	<bean id = "passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg name="strength" value="12"/>
+	</bean> 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"

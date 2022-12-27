@@ -12,10 +12,9 @@ import org.springframework.stereotype.Repository;
 import com.model.Staff;
 import com.reponsitory.StaffReponsitory;
 
-
 @Repository
 public class StaffReponsitoryImp implements StaffReponsitory {
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -63,7 +62,8 @@ public class StaffReponsitoryImp implements StaffReponsitory {
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Staff.class).add(Restrictions.like("tenNhanVien", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(Staff.class)
+					.add(Restrictions.like("tenNhanVien", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -159,6 +159,23 @@ public class StaffReponsitoryImp implements StaffReponsitory {
 			session.close();
 		}
 		return false;
+	}
+
+	@Override
+	public Staff getByName(String name) {
+		Session session = null;
+		try {
+			session = sessionFactory.openSession();
+			session.beginTransaction();
+			Staff staff = (Staff) session.createCriteria(Staff.class).add(Restrictions.eq("userName", name)).uniqueResult();
+			return staff;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
 	}
 
 }
