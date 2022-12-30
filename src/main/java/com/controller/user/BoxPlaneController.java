@@ -54,7 +54,7 @@ public class BoxPlaneController {
 		int firstResult = (page - 1) * pageSize;
 		List<ChuyenBay> products;
 		Long totalRecords;
-		products = flightReponsitory.findAll(firstResult, pageSize, diemDi, diemDen, date,true);
+		products = flightReponsitory.findAll(firstResult, pageSize, diemDi, diemDen, date, true);
 		model.addAttribute("pros", products);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("page", page);
@@ -96,6 +96,7 @@ public class BoxPlaneController {
 				b.setMaKhachHang(m);
 				b.settGlap(new Date());
 				billReponsitory.add(b);
+				model.addAttribute("success", "Đặt Vé Thành Công !");
 				return "admin/datVeMayBay/searchFlight";
 			} else {
 				ChuyenBay c = flightReponsitory.getById(maChuyenBay);
@@ -108,24 +109,4 @@ public class BoxPlaneController {
 
 		}
 	}
-
-//
-//	@PostMapping(value = "/update")
-//	public String update(@ModelAttribute("m") DuongBay m, Model model) {
-//		boolean bl = airstripReponsitory.edit(m);
-//		if (bl) {
-//			model.addAttribute("err", "Cập Nhật Thành Công");
-//			return "redirect:/airstrip/index";
-//		} else {
-//			model.addAttribute("m", m);
-//			model.addAttribute("err", "Cập Nhật Không Thành Công");
-//			return "admin/airstrip/updateAirstrip";
-//		}
-//	}
-//
-//	@RequestMapping(value = "/delete")
-//	public String xoa(@RequestParam("id") Integer id, Model model) {
-//		airstripReponsitory.delete(id);
-//		return "redirect:/airstrip/index";
-//	}
 }

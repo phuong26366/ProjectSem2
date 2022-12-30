@@ -31,13 +31,13 @@
 		</div>
 		<div class="card">
 			<div class="card-body login-card-body">
-				<p class="login-box-msg">Sign in to start your session</p>
+				<p class="login-box-msg"></p>
 
 				<form action="<c:url value='j_spring_security_login'/> "
 					method="post">
 					<div class="input-group mb-3">
 						<input type="text" name="username" class="form-control"
-							placeholder="Email">
+							placeholder="Tài Khoản ">
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fa fa-user-circle-o"></span>
@@ -46,7 +46,7 @@
 					</div>
 					<div class="input-group mb-3">
 						<input type="password" name="password" class="form-control"
-							placeholder="Password">
+							placeholder="Mật Khẩu ">
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fa fa-lock"></span>
@@ -56,8 +56,8 @@
 					<div class="row">
 						<!-- /.col -->
 						<div class="col-4">
-							<button type="submit" class="btn btn-primary btn-block">Sign
-								In</button>
+							<button type="submit" class="btn btn-primary btn-block">
+								Login</button>
 						</div>
 						<!-- /.col -->
 					</div>

@@ -135,7 +135,8 @@
 										<a href="#" class="btn btn-default btn-flat">Profile</a>
 									</div>
 									<div class="pull-right">
-										<a href="${pageContext.request.contextPath}/j_spring_security_logout"
+										<a
+											href="${pageContext.request.contextPath}/j_spring_security_logout"
 											class="btn btn-default btn-flat">Sign out</a>
 									</div>
 								</li>
@@ -289,3 +290,4 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
+		

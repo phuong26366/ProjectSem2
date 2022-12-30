@@ -54,7 +54,7 @@
 							</div>
 							<div class="radio">
 								<label> <form:radiobutton path="chucVu" value="false" /><span
-									class="label label-success">Nhân Viên</span>
+									class="label label-primary">Nhân Viên</span>
 								</label>
 							</div>
 							<form:errors path="chucVu" cssClass="erorr" />

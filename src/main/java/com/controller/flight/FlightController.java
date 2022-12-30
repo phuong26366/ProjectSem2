@@ -86,10 +86,21 @@ public class FlightController {
 			List<MayBay> m = mayBayReponsitory.findAll();
 			List<DuongBay> d = duongBayReponsitory.findAll();
 			model.addAttribute("m", m);
-			model.addAttribute("c", c);
 			model.addAttribute("d", d);
+			model.addAttribute("c", c);
 			return "admin/flight/addFlight";
 		} else {
+			List<ChuyenBay> chuyenbays = chyenBayReponsitory.findAll();
+			for (ChuyenBay chuyenbay : chuyenbays) {
+				if (c.getGioBay().equalsIgnoreCase(chuyenbay.getGioBay()) == true) {
+					model.addAttribute("err", "Giờ bay đã tồn tại trong chuyến bay này !");
+					List<MayBay> m = mayBayReponsitory.findAll();
+					List<DuongBay> d = duongBayReponsitory.findAll();
+					model.addAttribute("m", m);
+					model.addAttribute("d", d);
+					return "admin/flight/addFlight";
+				}
+			}
 			boolean bl = chyenBayReponsitory.add(c);
 			if (bl) {
 				return "redirect:/flight/index";

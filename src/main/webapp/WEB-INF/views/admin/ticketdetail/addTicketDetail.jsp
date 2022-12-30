@@ -55,11 +55,9 @@
 							<form:errors path="giaVe" cssClass="erorr" />
 						</div>
 						<button type="submit" class="btn btn-info">Thêm Mới</button>
-					</div>		
+					</div>
 				</div>
 			</form:form>
-
-
 		</div>
 	</div>
 	<!-- /.box -->

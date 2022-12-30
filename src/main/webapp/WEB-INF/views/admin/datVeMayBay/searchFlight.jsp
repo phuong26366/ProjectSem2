@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +44,24 @@
 					</div>
 					<div class="col-md-7 col-md-offset-1">
 						<div class="booking-form">
-							<form action="${pageContext.request.contextPath}/box-plane/search" method="post">
+							<c:choose>
+								<c:when test="${empty success}">
+									<div class="alert alert-success" style="display: none">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">&times;</button>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="alert alert-success">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">&times;</button>
+										${success}
+									</div>
+								</c:otherwise>
+							</c:choose>
+							<form
+								action="${pageContext.request.contextPath}/box-plane/search"
+								method="post">
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
@@ -62,7 +80,8 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<span class="form-label">Ngày Bay :</span> <input
-												class="form-control" type="date" name="date" id="txtDate" required="required">
+												class="form-control" type="date" name="date" id="txtDate"
+												required="required">
 										</div>
 									</div>
 								</div>

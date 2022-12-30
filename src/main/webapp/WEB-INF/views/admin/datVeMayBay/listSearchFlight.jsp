@@ -48,13 +48,11 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th>Tên Máy Bay</th>
 										<th>Tên Chuyến Bay</th>
 										<th>Ngày Bay</th>
 										<th>Giờ Bay</th>
 										<th>Điểm Đi</th>
 										<th>Điểm Đến</th>
-										<th>Trạng Thái</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -70,7 +68,6 @@
 										<c:otherwise>
 											<c:forEach items="${pros}" var="pro">
 												<tr>
-													<td>${pro.maMayBay.tenMayBay}</td>
 													<td>${pro.tenChuyenBay}</td>
 													<td><fmt:formatDate pattern="dd-MM-yyyy"
 															value="${pro.ngayBay}" /></td>

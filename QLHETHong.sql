@@ -78,14 +78,7 @@ create table hoadonve(
 	FOREIGN KEY (maChuyenBay) REFERENCES chuyenbay(maChuyenBay),
 	FOREIGN KEY (maTHongTin) REFERENCES thongtinchitietve(maTHongTin),
 )
-go 
-create table veban(
-	maVe int not null identity primary key,
-	maHoaDon int not null ,
-	maChuyenBay int not null,
-	tGLap DateTime default(CURRENT_TIMESTAMP),
-	FOREIGN KEY (maHoaDon) REFERENCES hoadonve(maHoaDon),
-)
+
 go
 create table [Role](
 	rid int identity primary key ,

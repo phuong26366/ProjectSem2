@@ -10,7 +10,7 @@
 			<form action="" method="get" class="form-inline" role="form">
 				<div class="form-group">
 					<input oninput="searchByName(this)" id="content" type="text"
-						name="name" class="form-control" placeholder="Tìm kiếm ...">
+						name="name" class="form-control" placeholder="Nhập tên máy bay cần tìm kiếm ">
 				</div>
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-search" aria-hidden="true"></i>

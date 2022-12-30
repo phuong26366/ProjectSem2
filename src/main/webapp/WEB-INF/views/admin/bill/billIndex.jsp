@@ -21,7 +21,7 @@
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
 					data-widget="collapse" data-toggle="tooltip" title="Collapse">
-					<i class="fa fa-minus"></i>
+					<i class="fa fa-minus"></i>,
 				</button>
 				<button type="button" class="btn btn-box-tool" data-widget="remove"
 					data-toggle="tooltip" title="Remove">
@@ -45,12 +45,10 @@
 						<tr>
 							<td>${pro.maHoaDon }</td>
 							<td>${pro.maChuyenBays.tenChuyenBay }</td>
-							<td><fmt:formatDate pattern="dd-MM-yyyy" value="${pro.tGlap }" />
-							</td>
+							<td><fmt:formatDate pattern="dd-MM-yyyy"
+									value="${pro.tGlap }" /></td>
 							<td><fmt:formatNumber value="${pro.maThongTin.giaVe }" /></td>
-							<td><a class="btn btn-small btn-warning"
-								href="${pageContext.request.contextPath}/bill/preUpdate?id=${pro.maHoaDon}">Cập
-									Nhật</a> <a class="btn btn-small btn-danger"
+							<td><a class="btn btn-small btn-danger"
 								href="${pageContext.request.contextPath}/bill/delete?id=${pro.maHoaDon}"
 								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
 						</tr>

@@ -9,17 +9,17 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title"></h3>
-			<form action="searchProducts" method="post" class="form-inline"
-				role="form">
+			<form action="" method="post" class="form-inline" role="form">
 				<div class="form-group">
 					<input oninput="searchByName(this)" id="content" type="text"
-						name="key" class="form-control" placeholder="">
+						name="name" class="form-control"
+						placeholder="Nhập tên nhân viên cần tìm kiếm ">
 				</div>
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
 				<a href="${pageContext.request.contextPath}/staff/initInsert"
-					class="btn btn-info">Thêm Mới </a>
+					class="btn btn-info">Thêm Mới</a>
 			</form>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
@@ -58,7 +58,6 @@
 							<td>${p.soDienThoai }</td>
 							<td>${p.diaChi }</td>
 							<td>${p.userName }</td>
-							<td>${p.password }</td>
 							<td><c:choose>
 									<c:when test="${p.chucVu==true}">
 										<span class="label label-success">Quản Lý</span>
