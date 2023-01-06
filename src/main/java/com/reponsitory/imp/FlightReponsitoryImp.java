@@ -11,7 +11,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.model.ChuyenBay;
+import com.model.Flight;
 import com.reponsitory.FlightReponsitory;
 @Repository
 public class FlightReponsitoryImp implements FlightReponsitory {
@@ -20,12 +20,12 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<ChuyenBay> findAll() {
+	public List<Flight> findAll() {
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			List<ChuyenBay> list = session.createCriteria(ChuyenBay.class).list();
+			List<Flight> list = session.createCriteria(Flight.class).list();
 			session.getTransaction().commit();
 			session.close();
 			return list;
@@ -38,11 +38,11 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 	}
 
 	@Override
-	public List<ChuyenBay> findAll(int position, int pageSize) {
+	public List<Flight> findAll(int position, int pageSize) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(ChuyenBay.class);
+			Criteria criteria = session.createCriteria(Flight.class);
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -55,12 +55,12 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 	}
 
 	@Override
-	public List<ChuyenBay> findAll(int position, int pageSize, String name) {
+	public List<Flight> findAll(int position, int pageSize, String name) {
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(ChuyenBay.class).add(Restrictions.like("diemDen", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(Flight.class).add(Restrictions.like("diemDen", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -77,20 +77,20 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 		Session session = sessionFactory.openSession();
 		Long count;
 		if (name == null) {
-			count = (Long) session.createCriteria(ChuyenBay.class).setProjection(Projections.rowCount()).uniqueResult();
+			count = (Long) session.createCriteria(Flight.class).setProjection(Projections.rowCount()).uniqueResult();
 		} else {
-			count = (Long) session.createCriteria(ChuyenBay.class).setProjection(Projections.rowCount())
+			count = (Long) session.createCriteria(Flight.class).setProjection(Projections.rowCount())
 					.add(Restrictions.like("diemDen", "%" + name + "%")).uniqueResult();
 		}
 		return count;
 	}
 
 	@Override
-	public ChuyenBay getById(Integer Id) {
+	public Flight getById(Integer Id) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			ChuyenBay c = (ChuyenBay) session.get(ChuyenBay.class, Id);
+			Flight c = (Flight) session.get(Flight.class, Id);
 			session.getTransaction().commit();
 			return c;
 		} catch (Exception e) {
@@ -104,7 +104,7 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 	}
 
 	@Override
-	public boolean add(ChuyenBay t) {
+	public boolean add(Flight t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -122,7 +122,7 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 	}
 
 	@Override
-	public boolean edit(ChuyenBay t) {
+	public boolean edit(Flight t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -144,7 +144,7 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			ChuyenBay p = session.load(ChuyenBay.class, id);
+			Flight p = session.load(Flight.class, id);
 			session.remove(p);
 			session.getTransaction().commit();
 			return true;
@@ -159,12 +159,12 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 	}
 
 	@Override
-	public List<ChuyenBay> findAll(int position, int pageSize, String diemDi, String diemDen, Date ngayBay ,  Boolean trangthai) {
+	public List<Flight> findAll(int position, int pageSize, String diemDi, String diemDen, Date ngayBay ,  Boolean trangthai) {
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(ChuyenBay.class).add(Restrictions.like("diemDi", "%" + diemDi + "%")).add(Restrictions.like("diemDen", "%" + diemDen + "%")).add(Restrictions.eq("ngayBay", ngayBay)).add(Restrictions.eq("trangThai", trangthai));
+			Criteria criteria = session.createCriteria(Flight.class).add(Restrictions.like("diemDi", "%" + diemDi + "%")).add(Restrictions.like("diemDen", "%" + diemDen + "%")).add(Restrictions.eq("ngayBay", ngayBay)).add(Restrictions.eq("trangThai", trangthai));
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
 		} catch (Exception e) {

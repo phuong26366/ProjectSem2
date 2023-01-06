@@ -174,7 +174,7 @@
 						<ul class="treeview-menu">
 							<li><a
 								href="${pageContext.request.contextPath}/airstrip/index"><i
-									class="fa fa-circle-o"></i> Chi Tiết Đường Bay</a></li>
+									class="fa fa-circle-o"></i> Danh Sách Đường Bay</a></li>
 						</ul></li>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
@@ -186,7 +186,7 @@
 						<ul class="treeview-menu">
 							<li><a
 								href="${pageContext.request.contextPath}/maybay/index"><i
-									class="fa fa-circle-o"></i> Chi Tiết Máy Bay</a></li>
+									class="fa fa-circle-o"></i> Danh Sách Máy Bay</a></li>
 						</ul></li>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
@@ -199,7 +199,7 @@
 						<ul class="treeview-menu">
 							<li><a
 								href="${pageContext.request.contextPath}/flight/index"><i
-									class="fa fa-circle-o"></i>Chi Tiết Chuyến Bay</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Chuyến Bay</a></li>
 						</ul>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
@@ -211,7 +211,7 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="${pageContext.request.contextPath}/staff/index"><i
-									class="fa fa-circle-o"></i>Thông Tin Nhân Viên</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Nhân Viên</a></li>
 						</ul>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
@@ -224,7 +224,7 @@
 						<ul class="treeview-menu">
 							<li><a
 								href="${pageContext.request.contextPath}/customer/index"><i
-									class="fa fa-circle-o"></i>Thông Tin Khách Hàng</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Khách Hàng</a></li>
 						</ul>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
@@ -237,7 +237,7 @@
 						<ul class="treeview-menu">
 							<li><a
 								href="${pageContext.request.contextPath}/ticketdetail/index"><i
-									class="fa fa-circle-o"></i>Chi Tiết Thông Tin Vé</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Thông Tin Vé</a></li>
 						</ul>
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
@@ -249,7 +249,7 @@
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="${pageContext.request.contextPath}/bill/index"><i
-									class="fa fa-circle-o"></i>Chi Tiết Hóa Đơn</a></li>
+									class="fa fa-circle-o"></i>Danh Sách Hóa Đơn</a></li>
 						</ul>
 				</ul>
 
@@ -290,4 +290,3 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
-		

@@ -24,14 +24,14 @@ public class Bill {
 	private Date tGlap;
 	@ManyToOne
 	@JoinColumn(name = "maChuyenBay")
-	private ChuyenBay maChuyenBays;
+	private Flight maChuyenBays;
 	@ManyToOne
 	@JoinColumn(name = "maThongTin")
 	private TicketDetail maThongTin;
 	@ManyToOne
 	@JoinColumn(name = "maKhachHang")
 	private Customer maKhachHang;
-	public Bill(int maHoaDon, float tongTien, Date tGlap, ChuyenBay maChuyenBays, TicketDetail maThongTin,
+	public Bill(int maHoaDon, float tongTien, Date tGlap, Flight maChuyenBays, TicketDetail maThongTin,
 			Customer maKhachHang) {
 		super();
 		this.maHoaDon = maHoaDon;
@@ -62,10 +62,10 @@ public class Bill {
 	public void settGlap(Date tGlap) {
 		this.tGlap = tGlap;
 	}
-	public ChuyenBay getMaChuyenBays() {
+	public Flight getMaChuyenBays() {
 		return maChuyenBays;
 	}
-	public void setMaChuyenBays(ChuyenBay maChuyenBays) {
+	public void setMaChuyenBays(Flight maChuyenBays) {
 		this.maChuyenBays = maChuyenBays;
 	}
 	public TicketDetail getMaThongTin() {

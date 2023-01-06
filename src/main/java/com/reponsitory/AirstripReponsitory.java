@@ -2,15 +2,15 @@ package com.reponsitory;
 
 import java.util.List;
 
-import com.model.DuongBay;
+import com.model.Airstrip;
 public interface AirstripReponsitory {
-	List<DuongBay> findAll();
-	List<DuongBay> findAll(int position, int pageSize);
-	List<DuongBay> findAll(int position, int pageSize, String name);
+	List<Airstrip> findAll();
+	List<Airstrip> findAll(int position, int pageSize);
+	List<Airstrip> findAll(int position, int pageSize, String name);
 	Long countTotalRecords(String name);
-	DuongBay getById(Integer Id);
-	boolean add(DuongBay t);
-	boolean edit(DuongBay t);
+	Airstrip getById(Integer Id);
+	boolean add(Airstrip t);
+	boolean edit(Airstrip t);
 	public Boolean delete(Integer id);
 
 }

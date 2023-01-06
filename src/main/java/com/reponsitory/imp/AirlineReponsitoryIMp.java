@@ -9,7 +9,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.model.MayBay;
+import com.model.Airline;
 import com.reponsitory.AirlineReponsitory;
 
 
@@ -20,13 +20,13 @@ public class AirlineReponsitoryIMp implements AirlineReponsitory {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<MayBay> findAll() {
+	public List<Airline> findAll() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			List<MayBay> list = session.createCriteria(MayBay.class).list();
+			List<Airline> list = session.createCriteria(Airline.class).list();
 			session.getTransaction().commit();
 			session.close();
 			return list;
@@ -39,12 +39,12 @@ public class AirlineReponsitoryIMp implements AirlineReponsitory {
 	}
 
 	@Override
-	public List<MayBay> findAll(int position, int pageSize) {
+	public List<Airline> findAll(int position, int pageSize) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(MayBay.class);
+			Criteria criteria = session.createCriteria(Airline.class);
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -57,13 +57,13 @@ public class AirlineReponsitoryIMp implements AirlineReponsitory {
 	}
 
 	@Override
-	public List<MayBay> findAll(int position, int pageSize, String name) {
+	public List<Airline> findAll(int position, int pageSize, String name) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(MayBay.class).add(Restrictions.like("tenMayBay", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(Airline.class).add(Restrictions.like("tenMayBay", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -80,20 +80,20 @@ public class AirlineReponsitoryIMp implements AirlineReponsitory {
 		Session session = sessionFactory.openSession();
 		Long count;
 		if (name == null) {
-			count = (Long) session.createCriteria(MayBay.class).setProjection(Projections.rowCount()).uniqueResult();
+			count = (Long) session.createCriteria(Airline.class).setProjection(Projections.rowCount()).uniqueResult();
 		} else {
-			count = (Long) session.createCriteria(MayBay.class).setProjection(Projections.rowCount())
+			count = (Long) session.createCriteria(Airline.class).setProjection(Projections.rowCount())
 					.add(Restrictions.like("tenMayBay", "%" + name + "%")).uniqueResult();
 		}
 		return count;
 	}
 
 	@Override
-	public MayBay getById(Integer Id) {
+	public Airline getById(Integer Id) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			MayBay c = (MayBay) session.get(MayBay.class, Id);
+			Airline c = (Airline) session.get(Airline.class, Id);
 			session.getTransaction().commit();
 			return c;
 		} catch (Exception e) {
@@ -107,7 +107,7 @@ public class AirlineReponsitoryIMp implements AirlineReponsitory {
 	}
 
 	@Override
-	public boolean add(MayBay t) {
+	public boolean add(Airline t) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		try {
@@ -126,7 +126,7 @@ public class AirlineReponsitoryIMp implements AirlineReponsitory {
 	}
 
 	@Override
-	public boolean edit(MayBay t) {
+	public boolean edit(Airline t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -148,7 +148,7 @@ public class AirlineReponsitoryIMp implements AirlineReponsitory {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			MayBay p = session.load(MayBay.class, id);
+			Airline p = session.load(Airline.class, id);
 			session.remove(p);
 			session.getTransaction().commit();
 			return true;

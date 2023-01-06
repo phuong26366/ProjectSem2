@@ -9,7 +9,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.model.DuongBay;
+import com.model.Airstrip;
 import com.reponsitory.AirstripReponsitory;
 
 @Repository
@@ -19,13 +19,13 @@ public class AirstripReponsitoryImp implements AirstripReponsitory{
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<DuongBay> findAll() {
+	public List<Airstrip> findAll() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			List<DuongBay> list = session.createCriteria(DuongBay.class).list();
+			List<Airstrip> list = session.createCriteria(Airstrip.class).list();
 			session.getTransaction().commit();
 			session.close();
 			return list;
@@ -38,11 +38,11 @@ public class AirstripReponsitoryImp implements AirstripReponsitory{
 	}
 
 	@Override
-	public List<DuongBay> findAll(int position, int pageSize) {
+	public List<Airstrip> findAll(int position, int pageSize) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(DuongBay.class);
+			Criteria criteria = session.createCriteria(Airstrip.class);
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -55,12 +55,12 @@ public class AirstripReponsitoryImp implements AirstripReponsitory{
 	}
 
 	@Override
-	public List<DuongBay> findAll(int position, int pageSize, String name) {
+	public List<Airstrip> findAll(int position, int pageSize, String name) {
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(DuongBay.class).add(Restrictions.like("viTri", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(Airstrip.class).add(Restrictions.like("viTri", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -77,20 +77,20 @@ public class AirstripReponsitoryImp implements AirstripReponsitory{
 		Session session = sessionFactory.openSession();
 		Long count;
 		if (name == null) {
-			count = (Long) session.createCriteria(DuongBay.class).setProjection(Projections.rowCount()).uniqueResult();
+			count = (Long) session.createCriteria(Airstrip.class).setProjection(Projections.rowCount()).uniqueResult();
 		} else {
-			count = (Long) session.createCriteria(DuongBay.class).setProjection(Projections.rowCount())
+			count = (Long) session.createCriteria(Airstrip.class).setProjection(Projections.rowCount())
 					.add(Restrictions.like("viTri", "%" + name + "%")).uniqueResult();
 		}
 		return count;
 	}
 
 	@Override
-	public DuongBay getById(Integer Id) {
+	public Airstrip getById(Integer Id) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			DuongBay c = (DuongBay) session.get(DuongBay.class, Id);
+			Airstrip c = (Airstrip) session.get(Airstrip.class, Id);
 			session.getTransaction().commit();
 			return c;
 		} catch (Exception e) {
@@ -104,7 +104,7 @@ public class AirstripReponsitoryImp implements AirstripReponsitory{
 	}
 
 	@Override
-	public boolean add(DuongBay t) {
+	public boolean add(Airstrip t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -122,7 +122,7 @@ public class AirstripReponsitoryImp implements AirstripReponsitory{
 	}
 
 	@Override
-	public boolean edit(DuongBay t) {
+	public boolean edit(Airstrip t) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -144,7 +144,7 @@ public class AirstripReponsitoryImp implements AirstripReponsitory{
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			DuongBay p = session.load(DuongBay.class, id);
+			Airstrip p = session.load(Airstrip.class, id);
 			session.remove(p);
 			session.getTransaction().commit();
 			return true;

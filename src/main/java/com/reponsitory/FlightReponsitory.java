@@ -3,16 +3,16 @@ package com.reponsitory;
 import java.util.Date;
 import java.util.List;
 
-import com.model.ChuyenBay;
+import com.model.Flight;
 public interface FlightReponsitory {
-	List<ChuyenBay> findAll();
-	List<ChuyenBay> findAll(int position, int pageSize);
-	List<ChuyenBay> findAll(int position, int pageSize, String name);
-	List<ChuyenBay> findAll(int position, int pageSize, String diemDi , String diemDen , Date ngayBay , Boolean trangthai);
+	List<Flight> findAll();
+	List<Flight> findAll(int position, int pageSize);
+	List<Flight> findAll(int position, int pageSize, String name);
+	List<Flight> findAll(int position, int pageSize, String diemDi , String diemDen , Date ngayBay , Boolean trangthai);
 	Long countTotalRecords(String name);
-	ChuyenBay getById(Integer Id);
-	boolean add(ChuyenBay t);
-	boolean edit(ChuyenBay t);
+	Flight getById(Integer Id);
+	boolean add(Flight t);
+	boolean edit(Flight t);
 	public Boolean delete(Integer id);
 
 }

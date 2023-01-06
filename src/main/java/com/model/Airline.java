@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "maybay")
-public class MayBay {
+public class Airline {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "maMAYBAY")
@@ -38,12 +38,12 @@ public class MayBay {
 	@NotNull(message = "Vui lòng chọn trạng thái !")
 	private boolean trangThai;
 	@OneToMany(mappedBy = "maMayBay")
-	private List<ChuyenBay> chuyenBays;
-	public MayBay(int maMayBay, @NotEmpty(message = "Tên máy bay không được để trống ") String tenMayBay,
+	private List<Flight> chuyenBays;
+	public Airline(int maMayBay, @NotEmpty(message = "Tên máy bay không được để trống ") String tenMayBay,
 			@NotEmpty(message = "Hãng sản xuất không được để trống ") String hangSanXuat,
 			@NotEmpty(message = "Kích thước không được để trống ") String kichThuoc, int soGheL1, int soGheL2,
 			int tongGhe, @NotNull(message = "Vui lòng chọn trạng thái !") boolean trangThai,
-			List<ChuyenBay> chuyenBays) {
+			List<Flight> chuyenBays) {
 		super();
 		this.maMayBay = maMayBay;
 		this.tenMayBay = tenMayBay;
@@ -55,7 +55,7 @@ public class MayBay {
 		this.trangThai = trangThai;
 		this.chuyenBays = chuyenBays;
 	}
-	public MayBay() {
+	public Airline() {
 		super();
 	}
 	public int getMaMayBay() {
@@ -106,10 +106,10 @@ public class MayBay {
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
-	public List<ChuyenBay> getChuyenBays() {
+	public List<Flight> getChuyenBays() {
 		return chuyenBays;
 	}
-	public void setChuyenBays(List<ChuyenBay> chuyenBays) {
+	public void setChuyenBays(List<Flight> chuyenBays) {
 		this.chuyenBays = chuyenBays;
 	}
 	

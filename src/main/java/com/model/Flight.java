@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "chuyenbay")
-public class ChuyenBay {
+public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "maChuyenBay")
@@ -43,23 +43,23 @@ public class ChuyenBay {
 	@ManyToOne
 	@JoinColumn(name = "maMAYBAY")
 	@NotNull(message = "Vui lòng chọn mã máy bay")
-	private MayBay maMayBay;
+	private Airline maMayBay;
 	@ManyToOne
 	@JoinColumn(name = "maDuongBay")
 	@NotNull(message = "Vui lòng chọn mã máy bay")
-	private DuongBay maDuongBay;
+	private Airstrip maDuongBay;
 	@OneToMany(mappedBy = "maChuyenBay")
 	private List<TicketDetail> ticketDetails;
 	@OneToMany(mappedBy = "maChuyenBays")
 	private List<Bill> bills;
-	public ChuyenBay(int maChuyenBay, @NotNull(message = "Tên Chuyến Bay không được để trống ") String tenChuyenBay,
+	public Flight(int maChuyenBay, @NotNull(message = "Tên Chuyến Bay không được để trống ") String tenChuyenBay,
 			@NotNull(message = "Ngày bay không được để trống ") Date ngayBay,
 			@NotEmpty(message = "Điểm đi không được để trống ") String diemDi,
 			@NotEmpty(message = "Điểm Đến không được để trống ") String diemDen,
 			@NotNull(message = "Giờ bay không được để trống ") String gioBay,
 			@NotNull(message = "Vui lòng chọn trạng thái !") boolean trangThai,
-			@NotNull(message = "Vui lòng chọn mã máy bay") MayBay maMayBay,
-			@NotNull(message = "Vui lòng chọn mã máy bay") DuongBay maDuongBay, List<TicketDetail> ticketDetails,
+			@NotNull(message = "Vui lòng chọn mã máy bay") Airline maMayBay,
+			@NotNull(message = "Vui lòng chọn mã máy bay") Airstrip maDuongBay, List<TicketDetail> ticketDetails,
 			List<Bill> bills) {
 		super();
 		this.maChuyenBay = maChuyenBay;
@@ -74,7 +74,7 @@ public class ChuyenBay {
 		this.ticketDetails = ticketDetails;
 		this.bills = bills;
 	}
-	public ChuyenBay() {
+	public Flight() {
 		super();
 	}
 	public int getMaChuyenBay() {
@@ -119,16 +119,16 @@ public class ChuyenBay {
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
-	public MayBay getMaMayBay() {
+	public Airline getMaMayBay() {
 		return maMayBay;
 	}
-	public void setMaMayBay(MayBay maMayBay) {
+	public void setMaMayBay(Airline maMayBay) {
 		this.maMayBay = maMayBay;
 	}
-	public DuongBay getMaDuongBay() {
+	public Airstrip getMaDuongBay() {
 		return maDuongBay;
 	}
-	public void setMaDuongBay(DuongBay maDuongBay) {
+	public void setMaDuongBay(Airstrip maDuongBay) {
 		this.maDuongBay = maDuongBay;
 	}
 	public List<TicketDetail> getTicketDetails() {

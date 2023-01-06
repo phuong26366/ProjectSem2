@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.model.DuongBay;
-import com.model.MayBay;
+import com.model.Airstrip;
+import com.model.Airline;
 import com.reponsitory.AirstripReponsitory;
 
 
@@ -29,7 +29,7 @@ public class AirstripController {
 			@RequestParam(value = "name", required = false, defaultValue = "") String name) {
 		int pageSize = 3;
 		int firstResult = (page - 1) * pageSize;
-		List<DuongBay> products;
+		List<Airstrip> products;
 		Long totalRecords;
 		if (name == "") {
 			totalRecords = airstripReponsitory.countTotalRecords(null);
@@ -49,19 +49,19 @@ public class AirstripController {
 
 	@GetMapping(value = "/initInsert")
 	public String add(Model model) {
-		DuongBay m = new DuongBay();
+		Airstrip m = new Airstrip();
 		model.addAttribute("m", m);
 		return "admin/airstrip/addAirstrip";
 	}
 
 	@PostMapping(value = "/insert")
-	public String insert(@Valid @ModelAttribute("m") DuongBay m, BindingResult bindingResult, Model model) {
+	public String insert(@Valid @ModelAttribute("m") Airstrip m, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("m", m);
 			return "admin/airstrip/addAirstrip";
 		} else {
-			List<DuongBay> duongBay = airstripReponsitory.findAll();
-			for (DuongBay duongBay1 : duongBay) {
+			List<Airstrip> duongBay = airstripReponsitory.findAll();
+			for (Airstrip duongBay1 : duongBay) {
 				if (m.getTenDuongBay().equalsIgnoreCase(duongBay1.getTenDuongBay()) == true) {
 					model.addAttribute("err", "Tên máy bay đã tồn tại");
 					return "admin/maybay/addMayBay";
@@ -79,12 +79,12 @@ public class AirstripController {
 	}
 	@GetMapping(value = "/preUpdate")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
-		DuongBay  m = airstripReponsitory.getById(id);
+		Airstrip  m = airstripReponsitory.getById(id);
 		model.addAttribute("m", m);
 		return "admin/airstrip/updateAirstrip";
 	}
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("m") DuongBay m, Model model) {
+	public String update(@ModelAttribute("m") Airstrip m, Model model) {
 		boolean bl = airstripReponsitory.edit(m);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");

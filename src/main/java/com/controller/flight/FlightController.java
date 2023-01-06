@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.model.ChuyenBay;
-import com.model.DuongBay;
-import com.model.MayBay;
+import com.model.Flight;
+import com.model.Airstrip;
+import com.model.Airline;
 import com.reponsitory.AirlineReponsitory;
 import com.reponsitory.AirstripReponsitory;
 import com.reponsitory.FlightReponsitory;
@@ -47,7 +47,7 @@ public class FlightController {
 			@RequestParam(value = "name", required = false, defaultValue = "") String name) {
 		int pageSize = 3;
 		int firstResult = (page - 1) * pageSize;
-		List<ChuyenBay> products;
+		List<Flight> products;
 		Long totalRecords;
 		if (name == "") {
 			totalRecords = chyenBayReponsitory.countTotalRecords(null);
@@ -67,9 +67,9 @@ public class FlightController {
 
 	@GetMapping(value = "/initInsert")
 	public String add(Model model) {
-		ChuyenBay c = new ChuyenBay();
-		List<MayBay> m = mayBayReponsitory.findAll();
-		List<DuongBay> d = duongBayReponsitory.findAll();
+		Flight c = new Flight();
+		List<Airline> m = mayBayReponsitory.findAll();
+		List<Airstrip> d = duongBayReponsitory.findAll();
 		model.addAttribute("m", m);
 		model.addAttribute("c", c);
 		model.addAttribute("d", d);
@@ -77,23 +77,23 @@ public class FlightController {
 	}
 
 	@PostMapping(value = "/insert")
-	public String insert(@Valid @ModelAttribute("c") ChuyenBay c, BindingResult bindingResult, Model model) {
+	public String insert(@Valid @ModelAttribute("c") Flight c, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
-			List<MayBay> m = mayBayReponsitory.findAll();
-			List<DuongBay> d = duongBayReponsitory.findAll();
+			List<Airline> m = mayBayReponsitory.findAll();
+			List<Airstrip> d = duongBayReponsitory.findAll();
 			model.addAttribute("m", m);
 			model.addAttribute("d", d);
 			model.addAttribute("c", c);
 			return "admin/flight/addFlight";
 		} else {
-			List<ChuyenBay> chuyenbays = chyenBayReponsitory.findAll();
-			for (ChuyenBay chuyenbay : chuyenbays) {
+			List<Flight> chuyenbays = chyenBayReponsitory.findAll();
+			for (Flight chuyenbay : chuyenbays) {
 				if (c.getGioBay().equalsIgnoreCase(chuyenbay.getGioBay()) == true
 						& c.getTenChuyenBay().equalsIgnoreCase(chuyenbay.getTenChuyenBay()) == true
 						& c.getNgayBay().equals(chuyenbay.getNgayBay()) == true) {
 					model.addAttribute("err", "Giờ bay đã tồn tại trong chuyến bay này !");
-					List<MayBay> m = mayBayReponsitory.findAll();
-					List<DuongBay> d = duongBayReponsitory.findAll();
+					List<Airline> m = mayBayReponsitory.findAll();
+					List<Airstrip> d = duongBayReponsitory.findAll();
 					model.addAttribute("m", m);
 					model.addAttribute("d", d);
 					return "admin/flight/addFlight";
@@ -112,9 +112,9 @@ public class FlightController {
 
 	@GetMapping(value = "/preUpdate")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
-		ChuyenBay c = chyenBayReponsitory.getById(id);
-		List<MayBay> m = mayBayReponsitory.findAll();
-		List<DuongBay> d = duongBayReponsitory.findAll();
+		Flight c = chyenBayReponsitory.getById(id);
+		List<Airline> m = mayBayReponsitory.findAll();
+		List<Airstrip> d = duongBayReponsitory.findAll();
 		model.addAttribute("c", c);
 		model.addAttribute("m", m);
 		model.addAttribute("d", d);
@@ -122,15 +122,15 @@ public class FlightController {
 	}
 
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("c") ChuyenBay c, Model model) {
+	public String update(@ModelAttribute("c") Flight c, Model model) {
 		boolean bl = chyenBayReponsitory.edit(c);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");
 			return "redirect:/flight/index";
 		} else {
 			model.addAttribute("c", c);
-			List<MayBay> m = mayBayReponsitory.findAll();
-			List<DuongBay> d = duongBayReponsitory.findAll();
+			List<Airline> m = mayBayReponsitory.findAll();
+			List<Airstrip> d = duongBayReponsitory.findAll();
 			model.addAttribute("m", m);
 			model.addAttribute("c", c);
 			model.addAttribute("d", d);

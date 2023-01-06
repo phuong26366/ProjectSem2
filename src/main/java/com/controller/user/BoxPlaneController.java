@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model.Bill;
-import com.model.ChuyenBay;
+import com.model.Flight;
 import com.model.Customer;
-import com.model.DuongBay;
+import com.model.Airstrip;
 import com.model.TicketDetail;
 import com.reponsitory.BillReponsitory;
 import com.reponsitory.CustomerReponsitory;
@@ -52,7 +52,7 @@ public class BoxPlaneController {
 			@RequestParam(value = "date", required = false, defaultValue = "") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
 		int pageSize = 3;
 		int firstResult = (page - 1) * pageSize;
-		List<ChuyenBay> products;
+		List<Flight> products;
 		Long totalRecords;
 		products = flightReponsitory.findAll(firstResult, pageSize, diemDi, diemDen, date, true);
 		model.addAttribute("pros", products);
@@ -64,7 +64,7 @@ public class BoxPlaneController {
 	@GetMapping(value = "/initBill")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
 		Customer m = new Customer();
-		ChuyenBay c = flightReponsitory.getById(id);
+		Flight c = flightReponsitory.getById(id);
 		List<TicketDetail> list = ticketDetailReponsitory.findAll(c);
 		model.addAttribute("c", c);
 		model.addAttribute("m", m);
@@ -79,7 +79,7 @@ public class BoxPlaneController {
 		System.out.println(maChuyenBay);
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("m", m);
-			ChuyenBay c = flightReponsitory.getById(maChuyenBay);
+			Flight c = flightReponsitory.getById(maChuyenBay);
 			List<TicketDetail> list = ticketDetailReponsitory.findAll(c);
 			model.addAttribute("c", c);
 			model.addAttribute("m", m);
@@ -89,7 +89,7 @@ public class BoxPlaneController {
 			Boolean bl = customerReponsitory.add(m);
 			if (bl) {
 				Bill b = new Bill();
-				ChuyenBay c = flightReponsitory.getById(maChuyenBay);
+				Flight c = flightReponsitory.getById(maChuyenBay);
 				TicketDetail t = ticketDetailReponsitory.getById(maThongTin);
 				b.setMaChuyenBays(c);
 				b.setMaThongTin(t);
@@ -99,7 +99,7 @@ public class BoxPlaneController {
 				model.addAttribute("success", "Đặt Vé Thành Công !");
 				return "admin/datVeMayBay/searchFlight";
 			} else {
-				ChuyenBay c = flightReponsitory.getById(maChuyenBay);
+				Flight c = flightReponsitory.getById(maChuyenBay);
 				List<TicketDetail> list = ticketDetailReponsitory.findAll(c);
 				model.addAttribute("c", c);
 				model.addAttribute("m", m);

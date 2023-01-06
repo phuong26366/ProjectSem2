@@ -2,14 +2,6 @@
 </div>
 <!-- /.content-wrapper -->
 
-<footer class="main-footer">
-	<div class="pull-right hidden-xs">
-		<b>Version</b> 2.4.0
-	</div>
-	<strong>Copyright &copy; 2014-2016 <a
-		href="https://adminlte.io">Almsaeed Studio</a>.
-	</strong> All rights reserved.
-</footer>
 
 </div>
 <!-- ./wrapper -->
@@ -45,7 +37,6 @@
 <script>
 	$(function() {
 		var dtToday = new Date();
-
 		var month = dtToday.getMonth() + 1;
 		var day = dtToday.getDate();
 		var year = dtToday.getFullYear();
@@ -53,7 +44,6 @@
 			month = '0' + month.toString();
 		if (day < 10)
 			day = '0' + day.toString();
-
 		var maxDate = year + '-' + month + '-' + day;
 
 		// or instead:

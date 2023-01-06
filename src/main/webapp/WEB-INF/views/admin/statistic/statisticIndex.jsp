@@ -9,25 +9,40 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title"></h3>
+			<form action="" method="get" class="form-inline" role="form">
+				<div class="row">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="">Chọn ngày bắt đầu :</label> <input type="date"
+								name="start" class="form-control"
+								placeholder="Nhập ngày bắt đầu ">
+						</div>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="">Chọn ngày kết thúc:</label> <input type="date"
+								name="end" class="form-control"
+								placeholder="Nhập ngày kết thúc ">
+						</div>
+						<button type="submit" class="btn btm-sm btn-primary">Thống Kê</button>
+					</div>
+				</div>
+
+
+
+			</form>
+			<div class="box-tools pull-right">
+				<button type="button" class="btn btn-box-tool"
+					data-widget="collapse" data-toggle="tooltip" title="Collapse">
+					<i class="fa fa-minus"></i>
+				</button>
+				<button type="button" class="btn btn-box-tool" data-widget="remove"
+					data-toggle="tooltip" title="Remove">
+					<i class="fa fa-times"></i>
+				</button>
+			</div>
 		</div>
 		<div class="box-body">
-			<div class="row">
-
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h2 class="text-center">Hàng Không Việt Nam Ariline</h2>
-					<h4 class="text-center">Địa chỉ : 200 Nguyễn Sơn - Bồ Đề -
-						Long Biên - Hà Nội</h4>
-					<h4 class="text-center">WebSite : http://www.google.com</h4>
-					<h4 class="text-center">Điện Thoại : 083224324 /</h4>
-				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="text-right">Seri: 902318238</p>
-					<p class="text-right">Ký Hiệu : VAL/988</p>
-					<p class="text-right">Số XB : 2023</p>
-					<p class="text-right">Mã DN : 01000231</p>
-				</div>
-			</div>
-			<br> <br> <br>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -38,7 +53,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach  items="${pros }" var="p" >
+					<c:forEach items="${pros }" var="p">
 						<tr>
 							<td>${p.maHoaDon }</td>
 							<td>${p.maChuyenBays.tenChuyenBay }</td>

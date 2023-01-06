@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.model.ChuyenBay;
+import com.model.Flight;
 import com.model.TicketDetail;
 import com.reponsitory.FlightReponsitory;
 import com.reponsitory.TicketDetailReponsitory;
@@ -46,7 +46,7 @@ public class TicketDetailController {
 	@GetMapping(value = "/initInsert")
 	public String add(Model model) {
 		TicketDetail m = new TicketDetail();
-		List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
+		List<Flight> chuyenBays = chyenBayReponsitory.findAll();
 		model.addAttribute("m", m);
 		model.addAttribute("chuyenBays", chuyenBays);
 		return "admin/ticketdetail/addTicketDetail";
@@ -55,7 +55,7 @@ public class TicketDetailController {
 	@PostMapping(value = "/insert")
 	public String insert(@Valid @ModelAttribute("m") TicketDetail m, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
-			List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
+			List<Flight> chuyenBays = chyenBayReponsitory.findAll();
 			model.addAttribute("m", m);
 			model.addAttribute("chuyenBays", chuyenBays);
 			return "admin/ticketdetail/addTicketDetail";
@@ -64,7 +64,7 @@ public class TicketDetailController {
 			if (bl) {
 				return "redirect:/ticketdetail/index";
 			} else {
-				List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
+				List<Flight> chuyenBays = chyenBayReponsitory.findAll();
 				model.addAttribute("m", m);
 				model.addAttribute("chuyenBays", chuyenBays);
 				model.addAttribute("err", "Thêm Mới Không Thành Công");
@@ -76,7 +76,7 @@ public class TicketDetailController {
 	@GetMapping(value = "/preUpdate")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
 		TicketDetail m = ticketDetailReponsitory.getById(id);
-		List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
+		List<Flight> chuyenBays = chyenBayReponsitory.findAll();
 		model.addAttribute("m", m);
 		model.addAttribute("chuyenBays", chuyenBays);
 		return "admin/ticketdetail/updateTicketDetail";
@@ -89,7 +89,7 @@ public class TicketDetailController {
 			model.addAttribute("err", "Cập Nhật Thành Công");
 			return "redirect:/ticketdetail/index";
 		} else {
-			List<ChuyenBay> chuyenBays = chyenBayReponsitory.findAll();
+			List<Flight> chuyenBays = chyenBayReponsitory.findAll();
 			model.addAttribute("m", m);
 			model.addAttribute("chuyenBays", chuyenBays);
 			model.addAttribute("err", "Cập Nhật Không Thành Công");

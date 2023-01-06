@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.model.ChuyenBay;
+import com.model.Flight;
 import com.model.TicketDetail;
 import com.reponsitory.TicketDetailReponsitory;
 
@@ -58,7 +58,7 @@ public class TicketDetailsReponsitoryImp implements TicketDetailReponsitory {
 	}
 
 	@Override
-	public List<TicketDetail> findAll(ChuyenBay maChuyenBay) {
+	public List<TicketDetail> findAll(Flight maChuyenBay) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 

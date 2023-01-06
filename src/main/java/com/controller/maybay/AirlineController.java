@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.model.MayBay;
+import com.model.Airline;
 import com.reponsitory.AirlineReponsitory;
 
 @Controller
@@ -29,7 +29,7 @@ public class AirlineController {
 			@RequestParam(value = "name", required = false, defaultValue = "") String name) {
 		int pageSize = 3;
 		int firstResult = (page - 1) * pageSize;
-		List<MayBay> products;
+		List<Airline> products;
 		Long totalRecords;
 		if (name == "") {
 			totalRecords = mayBayReponsitory.countTotalRecords(null);
@@ -49,19 +49,19 @@ public class AirlineController {
 
 	@GetMapping(value = "/initInsert")
 	public String add(Model model) {
-		MayBay m = new MayBay();
+		Airline m = new Airline();
 		model.addAttribute("m", m);
 		return "admin/maybay/addMayBay";
 	}
 
 	@PostMapping(value = "/insert")
-	public String insert(@Valid @ModelAttribute("m") MayBay m, BindingResult bindingResult, Model model) {
+	public String insert(@Valid @ModelAttribute("m") Airline m, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("m", m);
 			return "admin/maybay/addMayBay";
 		} else {
-			List<MayBay> mayBay = mayBayReponsitory.findAll();
-			for (MayBay mayBay2 : mayBay) {
+			List<Airline> mayBay = mayBayReponsitory.findAll();
+			for (Airline mayBay2 : mayBay) {
 				if (m.getTenMayBay().equalsIgnoreCase(mayBay2.getTenMayBay()) == true) {
 					model.addAttribute("err", "Tên máy bay đã tồn tại");
 					return "admin/maybay/addMayBay";
@@ -79,12 +79,12 @@ public class AirlineController {
 	}
 	@GetMapping(value = "/preUpdate")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
-		MayBay m = mayBayReponsitory.getById(id);
+		Airline m = mayBayReponsitory.getById(id);
 		model.addAttribute("m", m);
 		return "admin/maybay/updateAirline";
 	}
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("m") MayBay m, Model model) {
+	public String update(@ModelAttribute("m") Airline m, Model model) {
 		boolean bl = mayBayReponsitory.edit(m);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");

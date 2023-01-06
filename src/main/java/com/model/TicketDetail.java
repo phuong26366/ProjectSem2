@@ -29,13 +29,13 @@ public class TicketDetail {
 	@ManyToOne
 	@JoinColumn(name = "maChuyenBay")
 	@NotNull(message = "Vui lòng chọn mã chuyến bay")
-	private ChuyenBay maChuyenBay;
+	private Flight maChuyenBay;
 	@OneToMany(mappedBy = "maThongTin")
 	private List<Bill> bills;
 
 	public TicketDetail(int maThongTin, @NotNull(message = "Vui lòng chọn ! ") boolean loaiVe,
 			@NotNull(message = "Giá vé bay không được để trống ") float giaVe,
-			@NotNull(message = "Vui lòng chọn mã chuyến bay") ChuyenBay maChuyenBay, List<Bill> bills) {
+			@NotNull(message = "Vui lòng chọn mã chuyến bay") Flight maChuyenBay, List<Bill> bills) {
 		super();
 		this.maThongTin = maThongTin;
 		this.loaiVe = loaiVe;
@@ -72,11 +72,11 @@ public class TicketDetail {
 		this.giaVe = giaVe;
 	}
 
-	public ChuyenBay getMaChuyenBay() {
+	public Flight getMaChuyenBay() {
 		return maChuyenBay;
 	}
 
-	public void setMaChuyenBay(ChuyenBay maChuyenBay) {
+	public void setMaChuyenBay(Flight maChuyenBay) {
 		this.maChuyenBay = maChuyenBay;
 	}
 

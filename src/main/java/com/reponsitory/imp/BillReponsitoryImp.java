@@ -1,5 +1,6 @@
 package com.reponsitory.imp;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -155,6 +156,22 @@ public class BillReponsitoryImp implements BillReponsitory {
 			session.close();
 		}
 		return false;
+	}
+
+	@Override
+	public List<Bill> findAll(Date start, Date end) {
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Bill.class).add(Restrictions.between("tGlap", start, end));
+			return criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			session.close();
+		}
+		return null;
 	}
 
 }
