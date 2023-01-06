@@ -3,11 +3,8 @@ package com.controller.flight;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.model.ChuyenBay;
 import com.model.DuongBay;
 import com.model.MayBay;
@@ -92,7 +88,9 @@ public class FlightController {
 		} else {
 			List<ChuyenBay> chuyenbays = chyenBayReponsitory.findAll();
 			for (ChuyenBay chuyenbay : chuyenbays) {
-				if (c.getGioBay().equalsIgnoreCase(chuyenbay.getGioBay()) == true) {
+				if (c.getGioBay().equalsIgnoreCase(chuyenbay.getGioBay()) == true
+						& c.getTenChuyenBay().equalsIgnoreCase(chuyenbay.getTenChuyenBay()) == true
+						& c.getNgayBay().equals(chuyenbay.getNgayBay()) == true) {
 					model.addAttribute("err", "Giờ bay đã tồn tại trong chuyến bay này !");
 					List<MayBay> m = mayBayReponsitory.findAll();
 					List<DuongBay> d = duongBayReponsitory.findAll();
@@ -143,7 +141,7 @@ public class FlightController {
 
 	@RequestMapping(value = "/delete")
 	public String xoa(@RequestParam("id") Integer id, Model model) {
-		mayBayReponsitory.delete(id);
+		chyenBayReponsitory.delete(id);
 		return "redirect:/flight/index";
 	}
 }
