@@ -15,8 +15,7 @@
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
-				<a href="${pageContext.request.contextPath}/flight/initInsert"
-					class="btn btn-success btn-sm">Thêm mới</a>
+				
 			</form>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
@@ -50,7 +49,9 @@
 							<td><fmt:formatNumber value="${pro.maThongTin.giaVe }" /></td>
 							<td><a class="btn btn-small btn-danger"
 								href="${pageContext.request.contextPath}/bill/delete?id=${pro.maHoaDon}"
-								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
+								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a> <a
+								href="${pageContext.request.contextPath}/bill/detail?id=${pro.maHoaDon}"
+								class="btn btn-info btn-sm">Chi Tiết</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

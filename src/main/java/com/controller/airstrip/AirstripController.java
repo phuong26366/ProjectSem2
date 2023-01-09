@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.model.Airstrip;
-import com.model.Airline;
 import com.reponsitory.AirstripReponsitory;
-
 
 @Controller
 @RequestMapping(value = "/airstrip")
@@ -77,14 +75,20 @@ public class AirstripController {
 			}
 		}
 	}
+
 	@GetMapping(value = "/preUpdate")
 	public String preUpdate(@RequestParam("id") Integer id, Model model) {
-		Airstrip  m = airstripReponsitory.getById(id);
+		Airstrip m = airstripReponsitory.getById(id);
 		model.addAttribute("m", m);
 		return "admin/airstrip/updateAirstrip";
 	}
+
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("m") Airstrip m, Model model) {
+	public String update(@Valid @ModelAttribute("m") Airstrip m, BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("m", m);
+			return "admin/airstrip/updateAirstrip";
+		}
 		boolean bl = airstripReponsitory.edit(m);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");
@@ -95,6 +99,7 @@ public class AirstripController {
 			return "admin/airstrip/updateAirstrip";
 		}
 	}
+
 	@RequestMapping(value = "/delete")
 	public String xoa(@RequestParam("id") Integer id, Model model) {
 		airstripReponsitory.delete(id);

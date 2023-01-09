@@ -31,7 +31,7 @@
 						<div class="form-group">
 							<label for="">Chọn Đường Bay :</label>
 							<form:select path="maDuongBay.maDuongBay" cssClass="form-control">
-								<form:options items="${d}" itemLabel="maDuongBay"
+								<form:options items="${d}" itemLabel="tenDuongBay"
 									itemValue="maDuongBay" />
 							</form:select>
 							<br>

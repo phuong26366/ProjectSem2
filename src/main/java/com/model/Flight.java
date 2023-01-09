@@ -2,7 +2,6 @@ package com.model;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,7 @@ public class Flight {
 	@Column(name = "maChuyenBay")
 	private int maChuyenBay;
 	@Column(name = "tenChuyenBay")
-	@NotNull(message = "Tên Chuyến Bay không được để trống ")
+	@NotEmpty(message = "Tên Chuyến Bay không được để trống ")
 	private String tenChuyenBay;
 	@Column(name = "ngayBay")
 	@NotNull(message = "Ngày bay không được để trống ")
@@ -35,7 +34,7 @@ public class Flight {
 	@NotEmpty(message = "Điểm Đến không được để trống ")
 	private String diemDen;
 	@Column(name = "gioBay")
-	@NotNull(message = "Giờ bay không được để trống ")
+	@NotEmpty(message = "Giờ bay không được để trống ")
 	private String gioBay;
 	@Column(name = "trangThai")
 	@NotNull(message = "Vui lòng chọn trạng thái !")
@@ -52,6 +51,7 @@ public class Flight {
 	private List<TicketDetail> ticketDetails;
 	@OneToMany(mappedBy = "maChuyenBays")
 	private List<Bill> bills;
+
 	public Flight(int maChuyenBay, @NotNull(message = "Tên Chuyến Bay không được để trống ") String tenChuyenBay,
 			@NotNull(message = "Ngày bay không được để trống ") Date ngayBay,
 			@NotEmpty(message = "Điểm đi không được để trống ") String diemDi,
@@ -74,74 +74,97 @@ public class Flight {
 		this.ticketDetails = ticketDetails;
 		this.bills = bills;
 	}
+
 	public Flight() {
 		super();
 	}
+
 	public int getMaChuyenBay() {
 		return maChuyenBay;
 	}
+
 	public void setMaChuyenBay(int maChuyenBay) {
 		this.maChuyenBay = maChuyenBay;
 	}
+
 	public String getTenChuyenBay() {
 		return tenChuyenBay;
 	}
+
 	public void setTenChuyenBay(String tenChuyenBay) {
 		this.tenChuyenBay = tenChuyenBay;
 	}
+
 	public Date getNgayBay() {
 		return ngayBay;
 	}
+
 	public void setNgayBay(Date ngayBay) {
 		this.ngayBay = ngayBay;
 	}
+
 	public String getDiemDi() {
 		return diemDi;
 	}
+
 	public void setDiemDi(String diemDi) {
 		this.diemDi = diemDi;
 	}
+
 	public String getDiemDen() {
 		return diemDen;
 	}
+
 	public void setDiemDen(String diemDen) {
 		this.diemDen = diemDen;
 	}
+
 	public String getGioBay() {
 		return gioBay;
 	}
+
 	public void setGioBay(String gioBay) {
 		this.gioBay = gioBay;
 	}
+
 	public boolean isTrangThai() {
 		return trangThai;
 	}
+
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
+
 	public Airline getMaMayBay() {
 		return maMayBay;
 	}
+
 	public void setMaMayBay(Airline maMayBay) {
 		this.maMayBay = maMayBay;
 	}
+
 	public Airstrip getMaDuongBay() {
 		return maDuongBay;
 	}
+
 	public void setMaDuongBay(Airstrip maDuongBay) {
 		this.maDuongBay = maDuongBay;
 	}
+
 	public List<TicketDetail> getTicketDetails() {
 		return ticketDetails;
 	}
+
 	public void setTicketDetails(List<TicketDetail> ticketDetails) {
 		this.ticketDetails = ticketDetails;
 	}
+
 	public List<Bill> getBills() {
 		return bills;
 	}
+
 	public void setBills(List<Bill> bills) {
 		this.bills = bills;
 	}
-	
+
 }

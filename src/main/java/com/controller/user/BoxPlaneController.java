@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.model.Bill;
 import com.model.Flight;
 import com.model.Customer;
-import com.model.Airstrip;
 import com.model.TicketDetail;
 import com.reponsitory.BillReponsitory;
 import com.reponsitory.CustomerReponsitory;
@@ -53,7 +51,6 @@ public class BoxPlaneController {
 		int pageSize = 3;
 		int firstResult = (page - 1) * pageSize;
 		List<Flight> products;
-		Long totalRecords;
 		products = flightReponsitory.findAll(firstResult, pageSize, diemDi, diemDen, date, true);
 		model.addAttribute("pros", products);
 		model.addAttribute("pageSize", pageSize);

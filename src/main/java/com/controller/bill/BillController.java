@@ -26,7 +26,6 @@ public class BillController {
 			@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			@RequestParam(value = "name", required = false, defaultValue = "") String name) {
 		int pageSize = 3;
-		int firstResult = (page - 1) * pageSize;
 		List<Bill> products;
 		Long totalRecords;
 		products = billReponsitory.findAll();
@@ -82,7 +81,12 @@ public class BillController {
 			return "admin/ticketdetail/updateTicketDetail";
 		}
 	}
-
+	@RequestMapping(value = "/detail")
+	public String detail(@RequestParam("id") Integer id, Model model) {
+		Bill bill = billReponsitory.getById(id);
+		model.addAttribute("b", bill);
+		return "admin/bill/detailBill";
+	}
 	@RequestMapping(value = "/delete")
 	public String xoa(@RequestParam("id") Integer id, Model model) {
 		billReponsitory.delete(id);

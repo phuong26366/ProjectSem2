@@ -1,4 +1,4 @@
-package com.controller.maybay;
+package com.controller.airline;
 
 import java.util.List;
 
@@ -84,7 +84,11 @@ public class AirlineController {
 		return "admin/maybay/updateAirline";
 	}
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("m") Airline m, Model model) {
+	public String update(@Valid @ModelAttribute("m") Airline m,BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("m", m);
+			return "admin/maybay/updateAirline";
+		}
 		boolean bl = mayBayReponsitory.edit(m);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");

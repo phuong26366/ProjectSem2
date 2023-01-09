@@ -24,12 +24,10 @@
 								name="end" class="form-control"
 								placeholder="Nhập ngày kết thúc ">
 						</div>
-						<button type="submit" class="btn btm-sm btn-primary">Thống Kê</button>
+						<button type="submit" class="btn btm-sm btn-primary">Thống
+							Kê</button>
 					</div>
 				</div>
-
-
-
 			</form>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool"
@@ -64,9 +62,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-
 			<br> <br>
-
 			<div class="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">

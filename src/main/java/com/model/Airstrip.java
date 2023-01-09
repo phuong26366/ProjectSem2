@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,6 +53,22 @@ public class Airstrip {
 	}
 	public Airstrip() {
 		super();
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(maDuongBay);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Airstrip other = (Airstrip) obj;
+		return maDuongBay == other.maDuongBay;
 	}
 	public int getMaDuongBay() {
 		return maDuongBay;

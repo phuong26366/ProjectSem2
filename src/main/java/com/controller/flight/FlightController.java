@@ -88,10 +88,30 @@ public class FlightController {
 		} else {
 			List<Flight> chuyenbays = chyenBayReponsitory.findAll();
 			for (Flight chuyenbay : chuyenbays) {
+				if (c.getNgayBay().equals(chuyenbay.getNgayBay()) == true
+						& c.getGioBay().equalsIgnoreCase(chuyenbay.getGioBay()) == true
+						& c.getMaMayBay().equals(chuyenbay.getMaMayBay()) == true) {
+					model.addAttribute("err", "Máy bay đã được sử dụng !");
+					List<Airline> m = mayBayReponsitory.findAll();
+					List<Airstrip> d = duongBayReponsitory.findAll();
+					model.addAttribute("m", m);
+					model.addAttribute("d", d);
+					return "admin/flight/addFlight";
+				}
 				if (c.getGioBay().equalsIgnoreCase(chuyenbay.getGioBay()) == true
-						& c.getTenChuyenBay().equalsIgnoreCase(chuyenbay.getTenChuyenBay()) == true
-						& c.getNgayBay().equals(chuyenbay.getNgayBay()) == true) {
-					model.addAttribute("err", "Giờ bay đã tồn tại trong chuyến bay này !");
+						&& c.getTenChuyenBay().equalsIgnoreCase(chuyenbay.getTenChuyenBay()) == true
+						&& c.getNgayBay().equals(chuyenbay.getNgayBay()) == true) {
+					model.addAttribute("err", "Chuyến bay đã tồn tại !");
+					List<Airline> m = mayBayReponsitory.findAll();
+					List<Airstrip> d = duongBayReponsitory.findAll();
+					model.addAttribute("m", m);
+					model.addAttribute("d", d);
+					return "admin/flight/addFlight";
+				}
+				if (c.getNgayBay().equals(chuyenbay.getNgayBay()) == true
+						& c.getGioBay().equalsIgnoreCase(chuyenbay.getGioBay()) == true
+						& c.getMaDuongBay().equals(chuyenbay.getMaDuongBay()) == true) {
+					model.addAttribute("err", "Đường bay đã được sử dụng !");
 					List<Airline> m = mayBayReponsitory.findAll();
 					List<Airstrip> d = duongBayReponsitory.findAll();
 					model.addAttribute("m", m);
@@ -122,13 +142,20 @@ public class FlightController {
 	}
 
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("c") Flight c, Model model) {
+	public String update(@Valid @ModelAttribute("c") Flight c,BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			List<Airline> m = mayBayReponsitory.findAll();
+			List<Airstrip> d = duongBayReponsitory.findAll();
+			model.addAttribute("m", m);
+			model.addAttribute("c", c);
+			model.addAttribute("d", d);
+			return "admin/flight/updateFlight";
+		}
 		boolean bl = chyenBayReponsitory.edit(c);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");
 			return "redirect:/flight/index";
 		} else {
-			model.addAttribute("c", c);
 			List<Airline> m = mayBayReponsitory.findAll();
 			List<Airstrip> d = duongBayReponsitory.findAll();
 			model.addAttribute("m", m);

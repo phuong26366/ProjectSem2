@@ -12,26 +12,32 @@
 			<div class="row">
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 					<img src="<c:url value="/resources/images/${s.image }"/>"
-						width="300px"> <br>
-					<br>	
+						width="300px"> <br> <br>
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<h2 class="text-center">CÔNG TY CỔ PHẦN ABC</h2>
-					<h4 class="text-center">58 Lê Quang Đạo - Nam Từ Niêm - Hà Nôi
-					</h4>
-					<h4 class="text-center">Điện thoại : 091231231233 Website:
+					<h2 class="text-center">CÔNG TY CỔ PHẦN VIỆT ANH</h2>
+					<h4 class="text-center">Thôn 3 - Lại Yên - Hoài Đức - Hà Nội</h4>
+					<h4 class="text-center">Điện thoại : 0385201482 Website:
 						abc.com.vn</h4>
-					<h3 class="text-center">PHIẾU NHÂN SỰ</h3>
-					<h4 class="text-center">NHÂN VIÊN BÁN VÉ</h4>
+					<h3 class="text-center">Phiếu Nhân SỰ</h3>
+					<h4 class="text-center">Thông Tin Nhân Viên</h4>
 				</div>
 			</div>
 
-			<h2>Thông Tin Cá Nhân :</h2><br>
-			<h4 >Mã Nhân Viên : ${s.maNhanVien }</h4> 
-			<br> Họ và Tên : ${s.tenNhanVien }<br>
-			<br> Số điện thoại : ${s.soDienThoai } <br>
-			<br>Địa Chỉ : ${s.diaChi } <br>
-			<br>Chức Vụ : ${s.chucVu }
+			<h2>Thông Tin Cá Nhân :</h2>
+			<br>
+			<h4>Mã Nhân Viên : ${s.maNhanVien }</h4>
+			<br>Họ và Tên : ${s.tenNhanVien }<br> <br>Số điện
+			thoại : ${s.soDienThoai } <br> <br>Địa Chỉ : ${s.diaChi } <br>
+			<br>Chức Vụ :
+			<c:choose>
+				<c:when test="${p.chucVu==true}">
+					<span class="label label-success">Quản Lý</span>
+				</c:when>
+				<c:otherwise>
+					<span class="label label-primary">Nhân Viên</span>
+				</c:otherwise>
+			</c:choose>
 
 
 		</div>

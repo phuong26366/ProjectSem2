@@ -83,7 +83,13 @@ public class TicketDetailController {
 	}
 
 	@PostMapping(value = "/update")
-	public String update(@ModelAttribute("m") TicketDetail m, Model model) {
+	public String update(@Valid  @ModelAttribute("m") TicketDetail m,BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			List<Flight> chuyenBays = chyenBayReponsitory.findAll();
+			model.addAttribute("m", m);
+			model.addAttribute("chuyenBays", chuyenBays);
+			return "admin/ticketdetail/updateTicketDetail";
+		}
 		boolean bl = ticketDetailReponsitory.edit(m);
 		if (bl) {
 			model.addAttribute("err", "Cập Nhật Thành Công");

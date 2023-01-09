@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -24,7 +26,8 @@ public class TicketDetail {
 	@NotNull(message = "Vui lòng chọn ! ")
 	private boolean loaiVe;
 	@Column(name = "giaVe")
-	@NotNull(message = "Giá vé bay không được để trống ")
+	@Max(value = 2000000 , message ="Giá vé nhỏ nhất là 2000000" )
+	@Min(value = 1 , message ="Giá vé nhỏ nhất là 1" )
 	private float giaVe;
 	@ManyToOne
 	@JoinColumn(name = "maChuyenBay")
