@@ -93,3 +93,7 @@ create table UserRole(
 	FOREIGN KEY (maNhanVien) REFERENCES nhanvien (maNhanVien),
 	FOREIGN KEY (rid) REFERENCES [Role] (rid)
 )
+go
+insert into Role(roleName,status) values ('ROLE_ADMIN',1)
+insert into nhanvien(tenNhanVien,soDienThoai,diaCHi,userName,passWord) values ('viet anh',01232132323,'ha noi','admin','$12$Yl4VxAljdyO.AvqCfhiHnuoIycGznK7VC0dHa9GHbt4gpI7I672s.')
+insert into UserRole(maNhanVien,rid) values (1,1)
