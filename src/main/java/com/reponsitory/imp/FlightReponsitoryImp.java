@@ -60,7 +60,7 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Flight.class).add(Restrictions.like("diemDen", "%" + name + "%"));
+			Criteria criteria = session.createCriteria(Flight.class).add(Restrictions.like("tenChuyenBay", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -80,7 +80,7 @@ public class FlightReponsitoryImp implements FlightReponsitory {
 			count = (Long) session.createCriteria(Flight.class).setProjection(Projections.rowCount()).uniqueResult();
 		} else {
 			count = (Long) session.createCriteria(Flight.class).setProjection(Projections.rowCount())
-					.add(Restrictions.like("diemDen", "%" + name + "%")).uniqueResult();
+					.add(Restrictions.like("tenChuyenBay", "%" + name + "%")).uniqueResult();
 		}
 		return count;
 	}
